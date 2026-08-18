@@ -21,3 +21,9 @@
 - [ ] Configurar las variables de entorno y el runtime compatibles para Vercel.
 - [ ] Desplegar en Vercel y validar la URL de producción.
 - [ ] Adaptar el servidor Express y las rutas estáticas al runtime de funciones de Vercel.
+- [x] Configurar en Vercel las variables de OAuth, base de datos y GitHub requeridas para el flujo autenticado. Descartado: el dashboard funciona en modo personal sin OAuth ni token.
+- [x] Eliminar la autenticación de la experiencia personal y permitir acceso directo al dashboard.
+- [x] Permitir sincronización pública de repositorios de Naithsirc23 sin requerir token de GitHub.
+- [ ] Simplificar el despliegue de Vercel para operar sin variables de OAuth ni sesión.
+- [ ] Desplegar en Vercel la versión sin autenticación y validar la carga de proyectos públicos sin OAuth.
+- [ ] Documentar las variables que siguen siendo necesarias para el modo personal.

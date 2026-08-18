@@ -89,4 +89,23 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
+/** Workspace único para el dashboard personal; evita depender de OAuth o cookies. */
+export async function getPersonalWorkspaceUserId() {
+  const openId = "cir-personal-workspace";
+  const existing = await getUserByOpenId(openId);
+  if (existing) return existing.id;
+
+  await upsertUser({
+    openId,
+    name: "Naithsirc23",
+    loginMethod: "personal",
+    role: "admin",
+    lastSignedIn: new Date(),
+  });
+
+  const created = await getUserByOpenId(openId);
+  if (!created) throw new Error("No se pudo inicializar el espacio de trabajo personal.");
+  return created.id;
+}
+
 // TODO: add feature queries here as your schema grows.

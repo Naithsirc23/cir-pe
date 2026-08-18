@@ -2,12 +2,19 @@ import { COOKIE_NAME } from "@shared/const";
 import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { publicProcedure, router } from "./_core/trpc";
+import { getPersonalWorkspaceUserId } from "./db";
 import { fetchGitHubRepositories } from "./github";
+import { toPublicDashboardProject } from "./public-projects";
 import { autoAssignCategoriesByTopics, createCategory, deleteCategory, getProject, listCategories, listProjects, syncProjectsFromGitHub, updateCategory, updateProject } from "./projects";
 
 const projectStatus = z.enum(["activo", "pausado", "publicado", "en riesgo"]);
 const projectPriority = z.enum(["alta", "media", "baja"]);
+
+async function hasPersistentWorkspace() {
+  const { getDb } = await import("./db");
+  return Boolean(await getDb());
+}
 
 export const appRouter = router({
   system: systemRouter,
@@ -20,28 +27,45 @@ export const appRouter = router({
     }),
   }),
   categories: router({
-    list: protectedProcedure.query(({ ctx }) => listCategories(ctx.user.id)),
-    create: protectedProcedure
+    list: publicProcedure.query(async () => (await hasPersistentWorkspace()) ? listCategories(await getPersonalWorkspaceUserId()) : []),
+    create: publicProcedure
       .input(z.object({ name: z.string().trim().min(1).max(64), color: z.string().regex(/^#[0-9A-Fa-f]{6}$/) }))
-      .mutation(({ ctx, input }) => createCategory(ctx.user.id, input)),
-    update: protectedProcedure
+      .mutation(async ({ input }) => createCategory(await getPersonalWorkspaceUserId(), input)),
+    update: publicProcedure
       .input(z.object({ id: z.number().int().positive(), name: z.string().trim().min(1).max(64), color: z.string().regex(/^#[0-9A-Fa-f]{6}$/) }))
-      .mutation(({ ctx, input }) => updateCategory(ctx.user.id, input.id, { name: input.name, color: input.color })),
-    delete: protectedProcedure
+      .mutation(async ({ input }) => updateCategory(await getPersonalWorkspaceUserId(), input.id, { name: input.name, color: input.color })),
+    delete: publicProcedure
       .input(z.object({ id: z.number().int().positive() }))
-      .mutation(({ ctx, input }) => deleteCategory(ctx.user.id, input.id)),
+      .mutation(async ({ input }) => deleteCategory(await getPersonalWorkspaceUserId(), input.id)),
   }),
   projects: router({
-    list: protectedProcedure.query(({ ctx }) => listProjects(ctx.user.id)),
-    get: protectedProcedure
-      .input(z.object({ id: z.number().int().positive() }))
-      .query(({ ctx, input }) => getProject(ctx.user.id, input.id)),
-    sync: adminProcedure.mutation(async ({ ctx }) => {
-      const repositories = await fetchGitHubRepositories();
-      return syncProjectsFromGitHub(ctx.user.id, repositories);
+    list: publicProcedure.query(async () => {
+      if (await hasPersistentWorkspace()) {
+        const ownerId = await getPersonalWorkspaceUserId();
+        const persistedProjects = await listProjects(ownerId);
+        if (persistedProjects.length > 0) return persistedProjects;
+
+        const repositories = await fetchGitHubRepositories();
+        await syncProjectsFromGitHub(ownerId, repositories);
+        return listProjects(ownerId);
+      }
+      const syncedAt = new Date();
+      return (await fetchGitHubRepositories()).map(repository => toPublicDashboardProject(repository, syncedAt));
     }),
-    autoAssignCategories: protectedProcedure.mutation(({ ctx }) => autoAssignCategoriesByTopics(ctx.user.id)),
-    update: protectedProcedure
+    get: publicProcedure
+      .input(z.object({ id: z.number().int().positive() }))
+      .query(async ({ input }) => {
+        if (await hasPersistentWorkspace()) return getProject(await getPersonalWorkspaceUserId(), input.id);
+        const project = (await fetchGitHubRepositories()).map(repository => toPublicDashboardProject(repository)).find(item => item.id === input.id);
+        return project ?? null;
+      }),
+    sync: publicProcedure.mutation(async () => {
+      const repositories = await fetchGitHubRepositories();
+      if (!(await hasPersistentWorkspace())) return { synced: repositories.length, syncedAt: new Date(), persistent: false };
+      return syncProjectsFromGitHub(await getPersonalWorkspaceUserId(), repositories);
+    }),
+    autoAssignCategories: publicProcedure.mutation(async () => autoAssignCategoriesByTopics(await getPersonalWorkspaceUserId())),
+    update: publicProcedure
       .input(
         z.object({
           id: z.number().int().positive(),
@@ -57,9 +81,9 @@ export const appRouter = router({
           milestoneAt: z.date().nullable().optional(),
         }),
       )
-      .mutation(async ({ ctx, input }) => {
+      .mutation(async ({ input }) => {
         const { id, ...values } = input;
-        await updateProject(ctx.user.id, id, values);
+        await updateProject(await getPersonalWorkspaceUserId(), id, values);
         return { success: true } as const;
       }),
   }),

@@ -5,3 +5,5 @@ La sincronización inicial autenticada importó 23 repositorios de la cuenta `Na
 La verificación final confirmó el roadmap de cinco fases en el detalle de un proyecto real, junto con los controles de avance, carpeta, siguiente acción, notas y enlaces. Las vistas protegidas muestran ahora un estado de acceso sin sesión y un estado recuperable cuando falla una consulta.
 
 Las pruebas automatizadas cubren la sesión, la autenticación del token de GitHub, la normalización y obtención paginada de repositorios, los errores de la API, la importación con persistencia simulada y la lógica de filtros del cliente. La suite completa pasó con 8 pruebas en 6 archivos de prueba.
+
+En la revisión del modo personal, Overview y Proyectos se cargaron directamente, sin pantalla de autenticación. Cuando el workspace persistente está vacío, el servidor importa automáticamente los repositorios públicos de `Naithsirc23`; se verificó visualmente el contador de 23 proyectos en la biblioteca y los indicadores del overview.

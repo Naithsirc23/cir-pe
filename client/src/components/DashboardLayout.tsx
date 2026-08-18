@@ -1,11 +1,8 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { AccessNotice } from "@/components/AccessNotice";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { useAuth } from "@/_core/hooks/useAuth";
-import { startLogin } from "@/const";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useIsMobile } from "@/hooks/useMobile";
-import { Activity, FolderKanban, LayoutDashboard, LogIn, LogOut, Moon, PanelLeft, Route, Sun } from "lucide-react";
+import { Activity, FolderKanban, LayoutDashboard, Moon, PanelLeft, Route, Sun } from "lucide-react";
 import type { CSSProperties } from "react";
 import { useLocation } from "wouter";
 import { Button } from "./ui/button";
@@ -23,7 +20,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 }
 
 function DashboardLayoutContent({ children }: { children: React.ReactNode }) {
-  const { user, loading, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [location, setLocation] = useLocation();
   const { state, toggleSidebar } = useSidebar();
@@ -67,20 +63,14 @@ function DashboardLayoutContent({ children }: { children: React.ReactNode }) {
             <TooltipContent side="right">Cambiar tema</TooltipContent>
           </Tooltip>
           <div className="user-block">
-            {loading ? <div className="user-loading" /> : user ? <>
-              <Avatar className="h-9 w-9 border border-sidebar-border"><AvatarFallback>{user.name?.charAt(0).toUpperCase() || "N"}</AvatarFallback></Avatar>
-              {!isCollapsed && <div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{user.name || "Naithsirc23"}</p><p className="truncate text-xs text-muted-foreground">Espacio personal</p></div>}
-              {!isCollapsed && <button onClick={logout} className="sidebar-signout" aria-label="Cerrar sesión"><LogOut className="h-4 w-4" /></button>}
-            </> : <>
-              <Avatar className="h-9 w-9 border border-sidebar-border"><AvatarFallback>N</AvatarFallback></Avatar>
-              {!isCollapsed && <button onClick={() => startLogin()} className="sidebar-login">Iniciar sesión <LogIn className="h-3.5 w-3.5" /></button>}
-            </>}
+            <span className="personal-avatar" aria-hidden="true">N</span>
+            {!isCollapsed && <div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">Naithsirc23</p><p className="truncate text-xs text-muted-foreground">Espacio personal</p></div>}
           </div>
         </SidebarFooter>
       </Sidebar>
       <SidebarInset className="cir-main-shell">
         {isMobile && <header className="mobile-header"><button className="mobile-trigger" onClick={toggleSidebar} aria-label="Abrir navegación"><PanelLeft className="h-5 w-5" /></button><span>{title}</span></header>}
-        <main className="cir-main">{loading ? <div className="loading-state min-h-[65vh]">Cargando tu espacio de trabajo...</div> : user ? children : <AccessNotice />}</main>
+        <main className="cir-main">{children}</main>
       </SidebarInset>
     </>
   );
