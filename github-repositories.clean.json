@@ -1,0 +1,454 @@
+[
+  {
+    "defaultBranchRef": {
+      "name": "master"
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "mft-bot",
+    "nameWithOwner": "Naithsirc23/mft-bot",
+    "primaryLanguage": {
+      "name": "Python"
+    },
+    "pushedAt": "2026-08-18T17:34:27Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-18T17:35:19Z",
+    "url": "https://github.com/Naithsirc23/mft-bot",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "master"
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "KRONOS",
+    "nameWithOwner": "Naithsirc23/KRONOS",
+    "primaryLanguage": {
+      "name": "Python"
+    },
+    "pushedAt": "2026-08-18T17:32:15Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-18T17:32:59Z",
+    "url": "https://github.com/Naithsirc23/KRONOS",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "master"
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "SMARTRANGE",
+    "nameWithOwner": "Naithsirc23/SMARTRANGE",
+    "primaryLanguage": {
+      "name": "Python"
+    },
+    "pushedAt": "2026-08-18T17:27:12Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-18T17:27:17Z",
+    "url": "https://github.com/Naithsirc23/SMARTRANGE",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "master"
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "SMART",
+    "nameWithOwner": "Naithsirc23/SMART",
+    "primaryLanguage": {
+      "name": "Python"
+    },
+    "pushedAt": "2026-08-18T17:27:01Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-18T17:27:14Z",
+    "url": "https://github.com/Naithsirc23/SMART",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "master"
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "London-BOS",
+    "nameWithOwner": "Naithsirc23/London-BOS",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-08-17T19:21:52Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-17T18:23:44Z",
+    "url": "https://github.com/Naithsirc23/London-BOS",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": true,
+    "name": "ELICONTABLE",
+    "nameWithOwner": "Naithsirc23/ELICONTABLE",
+    "primaryLanguage": {
+      "name": "TypeScript"
+    },
+    "pushedAt": "2026-08-17T17:03:28Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-17T17:05:17Z",
+    "url": "https://github.com/Naithsirc23/ELICONTABLE",
+    "visibility": "PRIVATE"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "master"
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": true,
+    "name": "lifetracker2",
+    "nameWithOwner": "Naithsirc23/lifetracker2",
+    "primaryLanguage": {
+      "name": "Python"
+    },
+    "pushedAt": "2026-08-16T19:42:33Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-16T19:43:00Z",
+    "url": "https://github.com/Naithsirc23/lifetracker2",
+    "visibility": "PRIVATE"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "",
+    "homepageUrl": "https://dashboard-cir.vercel.app",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": true,
+    "name": "cir-dashboard",
+    "nameWithOwner": "Naithsirc23/cir-dashboard",
+    "primaryLanguage": {
+      "name": "JavaScript"
+    },
+    "pushedAt": "2026-08-16T19:09:04Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-16T19:32:50Z",
+    "url": "https://github.com/Naithsirc23/cir-dashboard",
+    "visibility": "PRIVATE"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "No fortress, purely open ground.  OpenManus is Coming.",
+    "homepageUrl": "https://openmanus.github.io/",
+    "isArchived": false,
+    "isFork": true,
+    "isPrivate": false,
+    "name": "OpenManus",
+    "nameWithOwner": "Naithsirc23/OpenManus",
+    "primaryLanguage": {
+      "name": "Python"
+    },
+    "pushedAt": "2026-08-16T10:36:18Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-08-18T16:49:43Z",
+    "url": "https://github.com/Naithsirc23/OpenManus",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": true,
+    "name": "helm",
+    "nameWithOwner": "Naithsirc23/helm",
+    "primaryLanguage": {
+      "name": "Python"
+    },
+    "pushedAt": "2026-06-22T20:16:20Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-06-21T22:57:06Z",
+    "url": "https://github.com/Naithsirc23/helm",
+    "visibility": "PRIVATE"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "",
+    "homepageUrl": "https://web-cv-lovat.vercel.app",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "WEB_CV",
+    "nameWithOwner": "Naithsirc23/WEB_CV",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-05-13T18:44:09Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-05-13T18:44:17Z",
+    "url": "https://github.com/Naithsirc23/WEB_CV",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "master"
+    },
+    "description": "",
+    "homepageUrl": "https://transportes-popoteja.vercel.app",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "Transportes-Popoteja",
+    "nameWithOwner": "Naithsirc23/Transportes-Popoteja",
+    "primaryLanguage": null,
+    "pushedAt": "2026-04-28T11:51:41Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-04-28T08:08:11Z",
+    "url": "https://github.com/Naithsirc23/Transportes-Popoteja",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": ""
+    },
+    "description": "",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "cir-pe",
+    "nameWithOwner": "Naithsirc23/cir-pe",
+    "primaryLanguage": null,
+    "pushedAt": "2026-04-24T17:45:10Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-04-24T17:45:10Z",
+    "url": "https://github.com/Naithsirc23/cir-pe",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "holding",
+    "homepageUrl": "https://cirpe.vercel.app",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": true,
+    "name": "CIR",
+    "nameWithOwner": "Naithsirc23/CIR",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-04-24T17:33:58Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-04-24T17:34:30Z",
+    "url": "https://github.com/Naithsirc23/CIR",
+    "visibility": "PRIVATE"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "master"
+    },
+    "description": "",
+    "homepageUrl": "https://asesoria-esv.vercel.app",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": true,
+    "name": "01-asesoria-esv",
+    "nameWithOwner": "Naithsirc23/01-asesoria-esv",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-04-24T16:07:36Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-04-24T16:07:40Z",
+    "url": "https://github.com/Naithsirc23/01-asesoria-esv",
+    "visibility": "PRIVATE"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "support for agora app - World Mini App",
+    "homepageUrl": "https://support-agora.vercel.app",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "support_agora",
+    "nameWithOwner": "Naithsirc23/support_agora",
+    "primaryLanguage": {
+      "name": "TypeScript"
+    },
+    "pushedAt": "2026-04-21T17:05:03Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-04-21T17:05:06Z",
+    "url": "https://github.com/Naithsirc23/support_agora",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": ""
+    },
+    "description": "Centro de Conciliación Extrajudicial - Landing page oficial",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "paz-acuerdo",
+    "nameWithOwner": "Naithsirc23/paz-acuerdo",
+    "primaryLanguage": null,
+    "pushedAt": "2026-04-11T05:56:49Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-04-11T05:56:49Z",
+    "url": "https://github.com/Naithsirc23/paz-acuerdo",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "RainyForests from 2026 - AI-generated rainy forest landscapes",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "rainyforestsfrom2026",
+    "nameWithOwner": "Naithsirc23/rainyforestsfrom2026",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-03-30T05:44:12Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-03-30T05:44:16Z",
+    "url": "https://github.com/Naithsirc23/rainyforestsfrom2026",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "SofiBeats - Música & Visuales con alma Ghibli",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "sofibeats",
+    "nameWithOwner": "Naithsirc23/sofibeats",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-03-30T05:38:36Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-03-30T05:38:39Z",
+    "url": "https://github.com/Naithsirc23/sofibeats",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "Cuentos de Lana — Amigurumis de fauna peruana con historias | Emergency gift en Jorge Chávez + delivery express",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "05-cuentos-de-lana",
+    "nameWithOwner": "Naithsirc23/05-cuentos-de-lana",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-03-30T02:52:38Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-03-30T02:52:42Z",
+    "url": "https://github.com/Naithsirc23/05-cuentos-de-lana",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "Equilibrio — Consejería de Transición | Sesiones 1:1 en horarios que otros no cubren. Virtual, Perú.",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "04-equilibrio",
+    "nameWithOwner": "Naithsirc23/04-equilibrio",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-03-30T02:52:31Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-03-30T02:52:34Z",
+    "url": "https://github.com/Naithsirc23/04-equilibrio",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "Peruvian Stamps - El Pasaporte del Viajero Eterno | Landing page con lead capture para colección de sellos de viajes",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "03-peruvian-stamps",
+    "nameWithOwner": "Naithsirc23/03-peruvian-stamps",
+    "primaryLanguage": {
+      "name": "HTML"
+    },
+    "pushedAt": "2026-03-29T22:04:20Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-03-29T22:04:23Z",
+    "url": "https://github.com/Naithsirc23/03-peruvian-stamps",
+    "visibility": "PUBLIC"
+  },
+  {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "Thimble Friends: Magia tejida a mano con lana y amor. Títeres de dedos y muñecos artesanales que dan vida a tus historias. Creaciones únicas para solopreneurs y coleccionistas.",
+    "homepageUrl": "",
+    "isArchived": false,
+    "isFork": false,
+    "isPrivate": false,
+    "name": "thimblefriends.github.io",
+    "nameWithOwner": "Naithsirc23/thimblefriends.github.io",
+    "primaryLanguage": null,
+    "pushedAt": "2026-02-28T04:40:14Z",
+    "repositoryTopics": null,
+    "updatedAt": "2026-02-28T04:40:36Z",
+    "url": "https://github.com/Naithsirc23/thimblefriends.github.io",
+    "visibility": "PUBLIC"
+  }
+]

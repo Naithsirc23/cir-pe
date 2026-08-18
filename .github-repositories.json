@@ -1,0 +1,454 @@
+[1;37m[[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"master"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"mft-bot"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/mft-bot"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"Python"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-18T17:34:27Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-18T17:35:19Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/mft-bot"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"master"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"KRONOS"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/KRONOS"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"Python"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-18T17:32:15Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-18T17:32:59Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/KRONOS"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"master"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"SMARTRANGE"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/SMARTRANGE"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"Python"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-18T17:27:12Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-18T17:27:17Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/SMARTRANGE"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"master"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"SMART"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/SMART"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"Python"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-18T17:27:01Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-18T17:27:14Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/SMART"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"master"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"London-BOS"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/London-BOS"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-17T19:21:52Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-17T18:23:44Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/London-BOS"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mtrue[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"ELICONTABLE"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/ELICONTABLE"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"TypeScript"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-17T17:03:28Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-17T17:05:17Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/ELICONTABLE"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PRIVATE"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"master"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mtrue[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"lifetracker2"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/lifetracker2"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"Python"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-16T19:42:33Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-16T19:43:00Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/lifetracker2"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PRIVATE"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m"https://dashboard-cir.vercel.app"[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mtrue[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"cir-dashboard"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/cir-dashboard"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"JavaScript"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-16T19:09:04Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-16T19:32:50Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/cir-dashboard"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PRIVATE"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"No fortress, purely open ground.  OpenManus is Coming."[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m"https://openmanus.github.io/"[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mtrue[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"OpenManus"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/OpenManus"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"Python"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-08-16T10:36:18Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-08-18T16:49:43Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/OpenManus"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mtrue[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"helm"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/helm"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"Python"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-06-22T20:16:20Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-06-21T22:57:06Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/helm"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PRIVATE"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m"https://web-cv-lovat.vercel.app"[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"WEB_CV"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/WEB_CV"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-05-13T18:44:09Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-05-13T18:44:17Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/WEB_CV"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"master"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m"https://transportes-popoteja.vercel.app"[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"Transportes-Popoteja"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/Transportes-Popoteja"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-04-28T11:51:41Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-04-28T08:08:11Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/Transportes-Popoteja"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m""[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"cir-pe"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/cir-pe"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-04-24T17:45:10Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-04-24T17:45:10Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/cir-pe"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"holding"[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m"https://cirpe.vercel.app"[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mtrue[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"CIR"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/CIR"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-04-24T17:33:58Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-04-24T17:34:30Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/CIR"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PRIVATE"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"master"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m"https://asesoria-esv.vercel.app"[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mtrue[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"01-asesoria-esv"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/01-asesoria-esv"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-04-24T16:07:36Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-04-24T16:07:40Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/01-asesoria-esv"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PRIVATE"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"support for agora app - World Mini App"[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m"https://support-agora.vercel.app"[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"support_agora"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/support_agora"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"TypeScript"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-04-21T17:05:03Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-04-21T17:05:06Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/support_agora"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m""[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"Centro de Conciliación Extrajudicial - Landing page oficial"[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"paz-acuerdo"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/paz-acuerdo"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-04-11T05:56:49Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-04-11T05:56:49Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/paz-acuerdo"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"RainyForests from 2026 - AI-generated rainy forest landscapes"[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"rainyforestsfrom2026"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/rainyforestsfrom2026"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-03-30T05:44:12Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-03-30T05:44:16Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/rainyforestsfrom2026"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"SofiBeats - Música & Visuales con alma Ghibli"[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"sofibeats"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/sofibeats"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-03-30T05:38:36Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-03-30T05:38:39Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/sofibeats"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"Cuentos de Lana — Amigurumis de fauna peruana con historias | Emergency gift en Jorge Chávez + delivery express"[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"05-cuentos-de-lana"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/05-cuentos-de-lana"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-03-30T02:52:38Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-03-30T02:52:42Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/05-cuentos-de-lana"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"Equilibrio — Consejería de Transición | Sesiones 1:1 en horarios que otros no cubren. Virtual, Perú."[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"04-equilibrio"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/04-equilibrio"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-03-30T02:52:31Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-03-30T02:52:34Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/04-equilibrio"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"Peruvian Stamps - El Pasaporte del Viajero Eterno | Landing page con lead capture para colección de sellos de viajes"[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"03-peruvian-stamps"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/03-peruvian-stamps"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"HTML"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-03-29T22:04:20Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-03-29T22:04:23Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/03-peruvian-stamps"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m[1;37m,[m
+  [1;37m{[m
+    [1;34m"defaultBranchRef"[m[1;37m:[m [1;37m{[m
+      [1;34m"name"[m[1;37m:[m [32m"main"[m
+    [1;37m}[m[1;37m,[m
+    [1;34m"description"[m[1;37m:[m [32m"Thimble Friends: Magia tejida a mano con lana y amor. Títeres de dedos y muñecos artesanales que dan vida a tus historias. Creaciones únicas para solopreneurs y coleccionistas."[m[1;37m,[m
+    [1;34m"homepageUrl"[m[1;37m:[m [32m""[m[1;37m,[m
+    [1;34m"isArchived"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isFork"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"isPrivate"[m[1;37m:[m [33mfalse[m[1;37m,[m
+    [1;34m"name"[m[1;37m:[m [32m"thimblefriends.github.io"[m[1;37m,[m
+    [1;34m"nameWithOwner"[m[1;37m:[m [32m"Naithsirc23/thimblefriends.github.io"[m[1;37m,[m
+    [1;34m"primaryLanguage"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"pushedAt"[m[1;37m:[m [32m"2026-02-28T04:40:14Z"[m[1;37m,[m
+    [1;34m"repositoryTopics"[m[1;37m:[m [36mnull[m[1;37m,[m
+    [1;34m"updatedAt"[m[1;37m:[m [32m"2026-02-28T04:40:36Z"[m[1;37m,[m
+    [1;34m"url"[m[1;37m:[m [32m"https://github.com/Naithsirc23/thimblefriends.github.io"[m[1;37m,[m
+    [1;34m"visibility"[m[1;37m:[m [32m"PUBLIC"[m
+  [1;37m}[m
+[1;37m][m
