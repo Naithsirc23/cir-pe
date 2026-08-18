@@ -20,3 +20,4 @@
 - [ ] Publicar la versión verificada de CIR Projects en Naithsirc23/cir-pe.
 - [ ] Configurar las variables de entorno y el runtime compatibles para Vercel.
 - [ ] Desplegar en Vercel y validar la URL de producción.
+- [ ] Adaptar el servidor Express y las rutas estáticas al runtime de funciones de Vercel.
