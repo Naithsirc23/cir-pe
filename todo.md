@@ -17,3 +17,6 @@
 - [x] Permitir editar nombre y color de las carpetas existentes.
 - [x] Ampliar las pruebas de sincronización y manejo de datos de GitHub.
 - [x] Probar con mocks la obtención paginada, el filtrado y los errores de la API de GitHub.
+- [ ] Publicar la versión verificada de CIR Projects en Naithsirc23/cir-pe.
+- [ ] Configurar las variables de entorno y el runtime compatibles para Vercel.
+- [ ] Desplegar en Vercel y validar la URL de producción.
