@@ -35,4 +35,4 @@
 - [x] Verificar la instalación y las vistas móvil/escritorio.
 - [x] Validar explícitamente la vista Actividad dentro de la experiencia móvil tipo app.
 - [x] Verificar en navegador que el service worker queda registrado y operativo para la PWA.
-- [ ] Publicar la actualización PWA y móvil en Naithsirc23/cir-pe.
+- [x] Publicar la actualización PWA y móvil en Naithsirc23/cir-pe.
