@@ -27,3 +27,12 @@
 - [x] Simplificar el despliegue de Vercel para operar sin variables de OAuth ni sesión.
 - [x] Desplegar en Vercel la versión sin autenticación y validar la carga de proyectos públicos sin OAuth.
 - [x] Documentar las variables que siguen siendo necesarias para el modo personal.
+- [x] Añadir manifiesto, iconos, metadatos y configuración de instalación PWA.
+- [x] Implementar un service worker con caché de recursos base y respuesta offline.
+- [x] Diseñar un shell móvil tipo aplicación de comunicaciones con navegación inferior fija.
+- [x] Adaptar Overview, Proyectos, Roadmap y Actividad a módulos compactos y táctiles en móvil.
+- [x] Añadir una prueba automatizada de registro y configuración PWA.
+- [x] Verificar la instalación y las vistas móvil/escritorio.
+- [x] Validar explícitamente la vista Actividad dentro de la experiencia móvil tipo app.
+- [x] Verificar en navegador que el service worker queda registrado y operativo para la PWA.
+- [ ] Publicar la actualización PWA y móvil en Naithsirc23/cir-pe.

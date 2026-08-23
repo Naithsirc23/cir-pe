@@ -1,0 +1,20 @@
+{
+  "name": "CIR Projects",
+  "short_name": "CIR Projects",
+  "description": "Centro personal para seguir proyectos y repositorios de desarrollo.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f8fc",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/manus-storage/cir-projects-pwa-icon_a2d4842b.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
