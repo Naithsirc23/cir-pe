@@ -150,6 +150,7 @@ export async function updateProject(
     phase?: string;
     progress?: number;
     nextAction?: string | null;
+    blockerReason?: string | null;
     notes?: string | null;
     demoUrl?: string | null;
     documentationUrl?: string | null;

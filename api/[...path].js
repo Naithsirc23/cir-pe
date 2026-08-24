@@ -50700,6 +50700,7 @@ var init_schema2 = __esm({
         phase: varchar("phase", { length: 80 }).notNull().default("Desarrollo"),
         progress: int2("progress").notNull().default(0),
         nextAction: text("nextAction"),
+        blockerReason: text("blockerReason"),
         notes: text("notes"),
         milestoneAt: timestamp("milestoneAt"),
         githubCreatedAt: timestamp("githubCreatedAt").notNull(),
@@ -67961,6 +67962,7 @@ function toPublicDashboardProject(repository, syncedAt = /* @__PURE__ */ new Dat
     phase: repository.isArchived ? "Archivado" : repository.homepageUrl ? "Publicado" : "En desarrollo",
     progress: repository.homepageUrl ? 100 : 0,
     nextAction: null,
+    blockerReason: null,
     notes: null,
     milestoneAt: null,
     lastSyncedAt: syncedAt
@@ -68136,6 +68138,7 @@ var appRouter = router({
         phase: external_exports.string().trim().min(1).max(80).optional(),
         progress: external_exports.number().int().min(0).max(100).optional(),
         nextAction: external_exports.string().max(2e3).nullable().optional(),
+        blockerReason: external_exports.string().max(2e3).nullable().optional(),
         notes: external_exports.string().max(1e4).nullable().optional(),
         demoUrl: external_exports.string().url().max(1024).nullable().optional(),
         documentationUrl: external_exports.string().url().max(1024).nullable().optional(),

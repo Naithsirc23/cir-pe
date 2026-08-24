@@ -28,6 +28,7 @@ export function toPublicDashboardProject(repository: GitHubRepository, syncedAt 
     phase: repository.isArchived ? "Archivado" : repository.homepageUrl ? "Publicado" : "En desarrollo",
     progress: repository.homepageUrl ? 100 : 0,
     nextAction: null,
+    blockerReason: null,
     notes: null,
     milestoneAt: null,
     lastSyncedAt: syncedAt,

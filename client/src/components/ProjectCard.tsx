@@ -1,7 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { type DashboardProject, relativeDate, statusLabel } from "@/lib/project-filters";
-import { ArrowUpRight, CircleDot, Github, Layers3 } from "lucide-react";
+import { loadProjectTracking, saveProjectTracking, type ProjectTracking } from "@/lib/project-tracking";
+import { trpc } from "@/lib/trpc";
+import { AlertTriangle, ArrowUpRight, Check, CircleDot, Github, Layers3, PencilLine, X } from "lucide-react";
+import React, { useState } from "react";
+import { toast } from "sonner";
 import { Link } from "wouter";
 
 const statusStyles = {
@@ -12,6 +16,21 @@ const statusStyles = {
 };
 
 export default function ProjectCard({ project }: { project: DashboardProject }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [tracking, setTracking] = useState<ProjectTracking>(() => loadProjectTracking(project.id, { nextAction: project.nextAction, blockerReason: project.blockerReason }));
+  const [draft, setDraft] = useState<ProjectTracking>(tracking);
+  const updateProject = trpc.projects.update.useMutation();
+
+  const saveTracking = () => {
+    saveProjectTracking(project.id, draft);
+    setTracking(draft);
+    setIsEditing(false);
+    updateProject.mutate({ id: project.id, nextAction: draft.nextAction, blockerReason: draft.blockerReason }, {
+      onSuccess: () => toast.success("Seguimiento guardado"),
+      onError: () => toast.success("Seguimiento guardado en este dispositivo"),
+    });
+  };
+
   return (
     <article className="project-card group">
       <div className="flex items-start justify-between gap-4">
@@ -35,7 +54,19 @@ export default function ProjectCard({ project }: { project: DashboardProject }) 
       </div>
       <Progress value={project.progress} className="project-progress mt-2" />
 
-      <div className="mt-5 flex flex-wrap gap-2">
+      <section className={tracking.blockerReason ? "project-tracking has-blocker" : "project-tracking"} aria-label={`Seguimiento de ${project.name}`}>
+        {isEditing ? <div className="tracking-editor">
+          <label>Siguiente tarea<textarea value={draft.nextAction ?? ""} onChange={event => setDraft(current => ({ ...current, nextAction: event.target.value || null }))} placeholder="Define el siguiente paso" maxLength={2000} /></label>
+          <label>Motivo de bloqueo<textarea value={draft.blockerReason ?? ""} onChange={event => setDraft(current => ({ ...current, blockerReason: event.target.value || null }))} placeholder="Describe qué impide avanzar" maxLength={2000} /></label>
+          <div className="tracking-editor-actions"><button className="tracking-cancel" onClick={() => { setDraft(tracking); setIsEditing(false); }}><X className="h-3.5 w-3.5" />Cancelar</button><button className="tracking-save" onClick={saveTracking} disabled={updateProject.isPending}><Check className="h-3.5 w-3.5" />Guardar</button></div>
+        </div> : <>
+          <div className="tracking-heading"><span>SIGUIENTE TAREA</span><button onClick={() => { setDraft(tracking); setIsEditing(true); }} aria-label={`Editar seguimiento de ${project.name}`}><PencilLine className="h-3.5 w-3.5" /></button></div>
+          <p className="next-action-copy">{tracking.nextAction || "Define la siguiente acción"}</p>
+          {tracking.blockerReason && <div className="blocker-copy"><AlertTriangle className="h-3.5 w-3.5" /><span>{tracking.blockerReason}</span></div>}
+        </>}
+      </section>
+
+      <div className="mt-4 flex flex-wrap gap-2">
         {project.categoryName ? (
           <span className="category-chip" style={{ "--category-color": project.categoryColor || "#4F46E5" } as React.CSSProperties}>
             <span className="category-dot" />{project.categoryName}

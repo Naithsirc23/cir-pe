@@ -12,6 +12,7 @@ export type DashboardProject = {
   priority: ProjectPriority;
   phase: string;
   progress: number;
+  blockerReason: string | null;
   language: string | null;
   topics: string[];
   repositoryUrl: string;

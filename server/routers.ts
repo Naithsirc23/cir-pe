@@ -75,6 +75,7 @@ export const appRouter = router({
           phase: z.string().trim().min(1).max(80).optional(),
           progress: z.number().int().min(0).max(100).optional(),
           nextAction: z.string().max(2000).nullable().optional(),
+          blockerReason: z.string().max(2000).nullable().optional(),
           notes: z.string().max(10000).nullable().optional(),
           demoUrl: z.string().url().max(1024).nullable().optional(),
           documentationUrl: z.string().url().max(1024).nullable().optional(),

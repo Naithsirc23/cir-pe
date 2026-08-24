@@ -53,6 +53,7 @@ export const projects = mysqlTable(
     phase: varchar("phase", { length: 80 }).notNull().default("Desarrollo"),
     progress: int("progress").notNull().default(0),
     nextAction: text("nextAction"),
+    blockerReason: text("blockerReason"),
     notes: text("notes"),
     milestoneAt: timestamp("milestoneAt"),
     githubCreatedAt: timestamp("githubCreatedAt").notNull(),
