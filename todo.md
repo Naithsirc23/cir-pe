@@ -38,14 +38,14 @@
 - [x] Publicar la actualización PWA y móvil en Naithsirc23/cir-pe.
 - [x] Confirmar que el último commit local de la PWA coincide con Naithsirc23/cir-pe.
 - [x] Verificar el despliegue de producción de la PWA en Vercel y entregar su URL pública.
-- [ ] Evaluar el modelo de datos y la persistencia necesarios para una PWA editable de proyectos.
-- [ ] Definir el flujo de edición para categorías, reorganización, siguiente tarea y bloqueos.
+- [x] Evaluar el modelo de datos y la persistencia necesarios para una PWA editable de proyectos.
+- [x] Definir el flujo de edición para categorías, reorganización, siguiente tarea y bloqueos.
 - [x] Añadir el campo persistente de motivo de bloqueo a los proyectos.
 - [x] Mostrar siguiente tarea y motivo de bloqueo en las cards de proyecto.
 - [x] Permitir editar rápidamente siguiente tarea y motivo de bloqueo desde cada card.
 - [x] Añadir pruebas para la lógica de seguimiento y persistencia de bloqueos.
 - [x] Validar las cards en móvil y escritorio.
-- [ ] Publicar el seguimiento de cards en GitHub y Vercel.
+- [x] Publicar el seguimiento de cards en GitHub y Vercel.
 - [x] Corregir la estrategia de caché PWA para que las actualizaciones de cards se reciban sin servir JavaScript obsoleto.
 - [x] Validar abrir, editar, guardar, recargar y cancelar el seguimiento rápido de una card.
 - [x] Ampliar pruebas de almacenamiento local y del contrato de bloqueo en el servidor.
