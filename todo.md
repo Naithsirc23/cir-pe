@@ -65,8 +65,9 @@
 - [x] Adaptar el runbook y la unidad systemd a `/home/cris/GITHUBS/DASHBOARDCIR`.
 - [ ] Adaptar el runbook y la configuración de Tailscale Serve al puerto local 8003.
 - [ ] Corregir el enrutamiento HTTPS de Tailscale para que la URL privada alcance CIR Projects y no el servicio Uvicorn ajeno.
+- [ ] Configurar el listener HTTPS 8443 de Tailscale Serve para CIR Projects sin afectar London-BOS.
 - [x] Añadir un adaptador de lectura de la API privada con fallback público en la PWA.
 - [ ] Configurar `VITE_CIR_PRIVATE_API_URL` en Vercel para producción y preview.
 - [ ] Verificar la conexión privada desde un dispositivo de la tailnet y el fallback fuera de ella.
-- [ ] Publicar y validar en Vercel el adaptador privado antes de marcar la integración como completa.
+- [x] Publicar y validar en Vercel el adaptador privado antes de marcar la integración como completa.
 - [ ] Verificar la PWA dentro de la tailnet con lectura privada y fuera de ella con fallback público.
