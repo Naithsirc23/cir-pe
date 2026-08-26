@@ -113,9 +113,11 @@ export function useDashboardData() {
     projects,
     categories,
     source: isPrivate ? "private" as const : "public" as const,
+    isPrivateConfigured: Boolean(configuredPrivateApiUrl),
     isLoading: !projects.length && (privateData.isLoading || publicProjects.isLoading),
     isError: !projects.length && !privateData.isLoading && publicProjects.isError,
     privateUnavailable: Boolean(configuredPrivateApiUrl && !isPrivate && privateData.isError),
     refetch: async () => { await Promise.all([publicProjects.refetch(), publicCategories.refetch(), privateData.refetch()]); },
+    retryPrivate: privateData.refetch,
   };
 }

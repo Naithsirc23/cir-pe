@@ -7,6 +7,16 @@ export function shouldRegisterServiceWorker(environment: Pick<Window, "isSecureC
 export function registerPwaServiceWorker() {
   if (!shouldRegisterServiceWorker()) return;
   window.addEventListener("load", () => {
-    void navigator.serviceWorker.register("/sw.js", { scope: "/" });
+    const hadController = Boolean(navigator.serviceWorker.controller);
+    let refreshed = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (hadController && !refreshed) {
+        refreshed = true;
+        window.location.reload();
+      }
+    });
+    void navigator.serviceWorker.register("/sw.js", { scope: "/" }).then(registration => {
+      void registration.update();
+    });
   }, { once: true });
 }

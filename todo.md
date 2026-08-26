@@ -61,13 +61,17 @@
 - [x] Crear una API local de lectura vinculada exclusivamente a localhost.
 - [x] Añadir healthcheck, límites de respuesta y pruebas del contrato privado.
 - [x] Documentar la configuración de Tailscale Serve y la validación desde dispositivos autorizados.
-- [ ] Ejecutar la instalación y validar Tailscale Serve en el computador Linux personal autorizado.
+- [x] Ejecutar la instalación y validar Tailscale Serve en el computador Linux personal autorizado.
 - [x] Adaptar el runbook y la unidad systemd a `/home/cris/GITHUBS/DASHBOARDCIR`.
-- [ ] Adaptar el runbook y la configuración de Tailscale Serve al puerto local 8003.
-- [ ] Corregir el enrutamiento HTTPS de Tailscale para que la URL privada alcance CIR Projects y no el servicio Uvicorn ajeno.
-- [ ] Configurar el listener HTTPS 8443 de Tailscale Serve para CIR Projects sin afectar London-BOS.
+- [x] Adaptar el runbook y la configuración de Tailscale Serve al puerto local 8003.
+- [x] Corregir el enrutamiento HTTPS de Tailscale para que la URL privada alcance CIR Projects y no el servicio Uvicorn ajeno.
+- [x] Configurar el listener HTTPS 8443 de Tailscale Serve para CIR Projects sin afectar London-BOS.
 - [x] Añadir un adaptador de lectura de la API privada con fallback público en la PWA.
 - [ ] Configurar `VITE_CIR_PRIVATE_API_URL` en Vercel para producción y preview.
 - [ ] Verificar la conexión privada desde un dispositivo de la tailnet y el fallback fuera de ella.
 - [x] Publicar y validar en Vercel el adaptador privado antes de marcar la integración como completa.
 - [ ] Verificar la PWA dentro de la tailnet con lectura privada y fuera de ella con fallback público.
+- [x] Diagnosticar la caché o el despliegue que impide mostrar los datos privados en el móvil.
+- [x] Diseñar un sistema visual móvil premium con texturas, jerarquía y transiciones accesibles.
+- [x] Rediseñar las vistas móviles de proyectos, roadmap y actividad con animaciones de interfaz útiles.
+- [ ] Validar el rediseño en móvil, pruebas y producción de Vercel.

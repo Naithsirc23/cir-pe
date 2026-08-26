@@ -2,7 +2,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useIsMobile } from "@/hooks/useMobile";
-import { Activity, Download, FolderKanban, LayoutDashboard, Moon, PanelLeft, Route, Sun } from "lucide-react";
+import { useDashboardData } from "@/lib/private-dashboard";
+import { Activity, Cloud, Download, FolderKanban, LayoutDashboard, Moon, PanelLeft, Route, ShieldCheck, Sun } from "lucide-react";
 import { useEffect, useState, type CSSProperties } from "react";
 import { useLocation } from "wouter";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, useSidebar } from "./ui/sidebar";
@@ -46,6 +47,9 @@ function DashboardLayoutContent({ children }: { children: React.ReactNode }) {
   const isCollapsed = state === "collapsed";
   const isMobile = useIsMobile();
   const title = menuItems.find(item => location === item.path || (item.path === "/proyectos" && location.startsWith("/proyectos/")))?.label || "CIR Projects";
+  const dashboard = useDashboardData();
+  const sourceLabel = dashboard.source === "private" ? "Privado activo" : dashboard.privateUnavailable ? "Vista GitHub" : "GitHub";
+  const SourceIcon = dashboard.source === "private" ? ShieldCheck : Cloud;
 
   return (
     <>
@@ -83,6 +87,7 @@ function DashboardLayoutContent({ children }: { children: React.ReactNode }) {
             <TooltipContent side="right">Cambiar tema</TooltipContent>
           </Tooltip>
           <InstallAppButton />
+          <div className={`data-source-chip ${dashboard.source === "private" ? "private" : dashboard.privateUnavailable ? "fallback" : "public"}`} title={dashboard.source === "private" ? "Datos locales privados disponibles por Tailscale" : dashboard.privateUnavailable ? "No se alcanzó la API privada: se muestran datos públicos de GitHub" : "Datos públicos de GitHub"}><SourceIcon className="h-3.5 w-3.5" /><span>{sourceLabel}</span></div>
           <div className="user-block">
             <span className="personal-avatar" aria-hidden="true">N</span>
             {!isCollapsed && <div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">Naithsirc23</p><p className="truncate text-xs text-muted-foreground">Espacio personal</p></div>}
@@ -90,7 +95,7 @@ function DashboardLayoutContent({ children }: { children: React.ReactNode }) {
         </SidebarFooter>
       </Sidebar>}
       <SidebarInset className="cir-main-shell">
-        {isMobile && <header className="mobile-app-header"><button className="mobile-brand" onClick={() => setLocation("/")} aria-label="Ir a Overview"><span className="brand-symbol">C</span><span><b>{title}</b><small>Tu centro de proyectos</small></span></button><div className="mobile-header-actions"><InstallAppButton compact /><button className="mobile-theme-button" onClick={toggleTheme} aria-label={`Cambiar a modo ${theme === "light" ? "oscuro" : "claro"}`}>{theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}</button></div></header>}
+        {isMobile && <header className="mobile-app-header"><button className="mobile-brand" onClick={() => setLocation("/")} aria-label="Ir a Overview"><span className="brand-symbol">C</span><span><b>{title}</b><small>Tu centro de proyectos</small></span></button><div className="mobile-header-actions"><span className={`mobile-source-pill ${dashboard.source === "private" ? "private" : dashboard.privateUnavailable ? "fallback" : "public"}`} title={dashboard.source === "private" ? "Datos privados activos" : dashboard.privateUnavailable ? "Usando GitHub mientras se restablece la conexión privada" : "Datos públicos de GitHub"}><SourceIcon className="h-3.5 w-3.5" /><span>{dashboard.source === "private" ? "Privado" : "GitHub"}</span></span><InstallAppButton compact /><button className="mobile-theme-button" onClick={toggleTheme} aria-label={`Cambiar a modo ${theme === "light" ? "oscuro" : "claro"}`}>{theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}</button></div></header>}
         <main className="cir-main">{children}</main>
         {isMobile && <nav className="mobile-tab-bar" aria-label="Navegación principal">{menuItems.map(item => { const active = location === item.path || (item.path === "/proyectos" && location.startsWith("/proyectos/")); return <button key={item.path} className={active ? "mobile-tab active" : "mobile-tab"} onClick={() => setLocation(item.path)} aria-current={active ? "page" : undefined}><span><item.icon className="h-[19px] w-[19px]" /></span><small>{item.label}</small></button>; })}</nav>}
       </SidebarInset>
