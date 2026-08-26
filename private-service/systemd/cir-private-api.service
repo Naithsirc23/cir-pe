@@ -1,0 +1,17 @@
+[Unit]
+Description=CIR Projects private read-only API
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/REEMPLAZA_USUARIO/src/cir-pe
+EnvironmentFile=/home/REEMPLAZA_USUARIO/.config/cir-private-api/env
+ExecStart=/usr/bin/env pnpm private:api
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

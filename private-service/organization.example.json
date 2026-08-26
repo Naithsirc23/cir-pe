@@ -1,0 +1,16 @@
+{
+  "categories": [
+    { "name": "Producto", "color": "#4F46E5", "position": 0 },
+    { "name": "Ideas", "color": "#0EA5E9", "position": 1 }
+  ],
+  "projects": [
+    {
+      "githubId": "REEMPLAZA_CON_EL_ID_DE_GITHUB",
+      "category": "Producto",
+      "position": 0,
+      "nextAction": "Describe la siguiente acción privada",
+      "blockerReason": null,
+      "notes": null
+    }
+  ]
+}

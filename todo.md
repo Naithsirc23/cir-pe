@@ -51,3 +51,14 @@
 - [x] Ampliar pruebas de almacenamiento local y del contrato de bloqueo en el servidor.
 - [x] Validar editar, guardar y recargar una card confirmando persistencia del seguimiento.
 - [x] Añadir una prueba de interfaz del guardado rápido con fallback local mediante pruebas de almacenamiento local, interfaz y verificación manual en navegador.
+- [ ] Auditar la configuración de producción y el acceso de Vercel a una base de datos persistente.
+- [ ] Configurar una variable DATABASE_URL de producción para el despliegue de Vercel.
+- [ ] Ejecutar el esquema y las migraciones de CIR Projects en la base de datos de producción.
+- [ ] Verificar en producción la persistencia cloud de seguimiento, categorías y metadatos de proyectos.
+- [x] Analizar el patrón de PWA pública con datos privados del documento adjunto y mapearlo a CIR Projects.
+- [x] Definir una hoja de ruta para adoptar el patrón sin interrumpir el despliegue actual.
+- [x] Definir un esquema SQLite local para proyectos, categorías, orden y seguimiento privado.
+- [x] Crear una API local de lectura vinculada exclusivamente a localhost.
+- [x] Añadir healthcheck, límites de respuesta y pruebas del contrato privado.
+- [x] Documentar la configuración de Tailscale Serve y la validación desde dispositivos autorizados.
+- [ ] Ejecutar la instalación y validar Tailscale Serve en el computador Linux personal autorizado.
