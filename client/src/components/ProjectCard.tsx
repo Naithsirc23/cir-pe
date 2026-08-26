@@ -3,8 +3,8 @@ import { Progress } from "@/components/ui/progress";
 import { type DashboardProject, relativeDate, statusLabel } from "@/lib/project-filters";
 import { loadProjectTracking, saveProjectTracking, type ProjectTracking } from "@/lib/project-tracking";
 import { trpc } from "@/lib/trpc";
-import { AlertTriangle, ArrowUpRight, Check, CircleDot, Github, Layers3, PencilLine, X } from "lucide-react";
-import React, { useState } from "react";
+import { AlertTriangle, ArrowUpRight, Check, CircleDot, Github, Layers3, LockKeyhole, PencilLine, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Link } from "wouter";
 
@@ -15,11 +15,19 @@ const statusStyles = {
   "en riesgo": "status-risk",
 };
 
-export default function ProjectCard({ project }: { project: DashboardProject }) {
+export default function ProjectCard({ project, readOnly = false }: { project: DashboardProject; readOnly?: boolean }) {
   const [isEditing, setIsEditing] = useState(false);
   const [tracking, setTracking] = useState<ProjectTracking>(() => loadProjectTracking(project.id, { nextAction: project.nextAction, blockerReason: project.blockerReason }));
   const [draft, setDraft] = useState<ProjectTracking>(tracking);
   const updateProject = trpc.projects.update.useMutation();
+
+  useEffect(() => {
+    if (!isEditing) {
+      const nextTracking = loadProjectTracking(project.id, { nextAction: project.nextAction, blockerReason: project.blockerReason });
+      setTracking(nextTracking);
+      setDraft(nextTracking);
+    }
+  }, [isEditing, project.blockerReason, project.id, project.nextAction]);
 
   const saveTracking = () => {
     saveProjectTracking(project.id, draft);
@@ -55,12 +63,12 @@ export default function ProjectCard({ project }: { project: DashboardProject }) 
       <Progress value={project.progress} className="project-progress mt-2" />
 
       <section className={tracking.blockerReason ? "project-tracking has-blocker" : "project-tracking"} aria-label={`Seguimiento de ${project.name}`}>
-        {isEditing ? <div className="tracking-editor">
+        {isEditing && !readOnly ? <div className="tracking-editor">
           <label>Siguiente tarea<textarea value={draft.nextAction ?? ""} onChange={event => setDraft(current => ({ ...current, nextAction: event.target.value || null }))} placeholder="Define el siguiente paso" maxLength={2000} /></label>
           <label>Motivo de bloqueo<textarea value={draft.blockerReason ?? ""} onChange={event => setDraft(current => ({ ...current, blockerReason: event.target.value || null }))} placeholder="Describe qué impide avanzar" maxLength={2000} /></label>
           <div className="tracking-editor-actions"><button className="tracking-cancel" onClick={() => { setDraft(tracking); setIsEditing(false); }}><X className="h-3.5 w-3.5" />Cancelar</button><button className="tracking-save" onClick={saveTracking} disabled={updateProject.isPending}><Check className="h-3.5 w-3.5" />Guardar</button></div>
         </div> : <>
-          <div className="tracking-heading"><span>SIGUIENTE TAREA</span><button onClick={() => { setDraft(tracking); setIsEditing(true); }} aria-label={`Editar seguimiento de ${project.name}`}><PencilLine className="h-3.5 w-3.5" /></button></div>
+          <div className="tracking-heading"><span>SIGUIENTE TAREA</span>{readOnly ? <span className="text-muted-foreground" title="La Fase 1 de datos privados es solo de lectura"><LockKeyhole className="h-3.5 w-3.5" /></span> : <button onClick={() => { setDraft(tracking); setIsEditing(true); }} aria-label={`Editar seguimiento de ${project.name}`}><PencilLine className="h-3.5 w-3.5" /></button>}</div>
           <p className="next-action-copy">{tracking.nextAction || "Define la siguiente acción"}</p>
           {tracking.blockerReason && <div className="blocker-copy"><AlertTriangle className="h-3.5 w-3.5" /><span>{tracking.blockerReason}</span></div>}
         </>}

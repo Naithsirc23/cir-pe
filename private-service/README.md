@@ -1,6 +1,6 @@
 # Servicio local privado de CIR Projects — Fase 1
 
-Este servicio conserva la información privada de CIR Projects en SQLite y ofrece únicamente rutas de lectura. Debe ejecutarse en tu computador Linux, no en Vercel ni en una instancia temporal. La API se vincula de forma fija a `127.0.0.1:8002`; Tailscale Serve es la única capa que debe permitir acceso desde tus otros dispositivos.
+Este servicio conserva la información privada de CIR Projects en SQLite y ofrece únicamente rutas de lectura. Debe ejecutarse en tu computador Linux, no en Vercel ni en una instancia temporal. En el host de Cris se vincula de forma fija a `127.0.0.1:8003`, porque el puerto `8002` pertenece a otro servicio local; Tailscale Serve es la única capa que debe permitir acceso desde tus otros dispositivos.
 
 > La Fase 1 no modifica categorías, orden ni seguimiento a través de la red. Su objetivo es comprobar la base local, el contrato de lectura y la conectividad privada antes de habilitar escritura en una etapa posterior.
 
@@ -66,7 +66,7 @@ La importación actualiza categorías por nombre, aplica `position` ascendente a
 mkdir -p ~/.config/cir-private-api
 chmod 700 ~/.config/cir-private-api
 cat > ~/.config/cir-private-api/env <<'EOF'
-CIR_PRIVATE_PORT=8002
+CIR_PRIVATE_PORT=8003
 CIR_PRIVATE_DB_PATH=/home/cris/GITHUBS/DASHBOARDCIR/private-service/data/cir-projects.sqlite
 CIR_GITHUB_USERNAME=Naithsirc23
 CIR_PRIVATE_ALLOWED_ORIGINS=https://cir-projects-dashboard.vercel.app
@@ -91,10 +91,10 @@ pnpm private:api
 En una segunda terminal se validan los endpoints.
 
 ```bash
-curl http://127.0.0.1:8002/api/health
-curl http://127.0.0.1:8002/api/categories
-curl 'http://127.0.0.1:8002/api/projects?limit=20'
-curl -X PATCH -i http://127.0.0.1:8002/api/projects
+curl http://127.0.0.1:8003/api/health
+curl http://127.0.0.1:8003/api/categories
+curl 'http://127.0.0.1:8003/api/projects?limit=20'
+curl -X PATCH -i http://127.0.0.1:8003/api/projects
 ```
 
 Los tres primeros comandos deben devolver JSON. El último debe responder `405 Method Not Allowed` y `Allow: GET, OPTIONS`, confirmando que el servicio sigue en modo de solo lectura.
@@ -125,35 +125,35 @@ Después de confirmar el healthcheck local, conecta el host a Tailscale y config
 
 ```bash
 tailscale status
-tailscale serve --bg 8002
+tailscale serve --https=8443 --bg http://127.0.0.1:8003
 tailscale serve status
 ```
 
-`tailscale serve status` mostrará un hostname `https://<nodo>.<tailnet>.ts.net` y el proxy hacia `http://127.0.0.1:8002`. Desde un teléfono o computador autorizado en la misma tailnet:
+El listener `8443` evita competir con London-BOS, que conserva el HTTPS raíz (`443`) de este mismo nodo. `tailscale serve status` mostrará el proxy de CIR Projects hacia `http://127.0.0.1:8003`. Desde un teléfono o computador autorizado en la misma tailnet:
 
 ```bash
-curl https://<nodo>.<tailnet>.ts.net/api/health
+curl --noproxy '*' -i https://<nodo>.<tailnet>.ts.net:8443/api/health
 ```
 
 Para retirar el acceso privado sin borrar la base ni detener la API, ejecuta:
 
 ```bash
-tailscale serve off
+tailscale serve --https=8443 off
 ```
 
 ## 8. Pruebas de aceptación
 
 | Escenario | Resultado correcto |
 |---|---|
-| Host Linux | `curl http://127.0.0.1:8002/api/health` responde JSON |
-| Otro equipo personal con Tailscale | La URL `*.ts.net/api/health` responde JSON HTTPS |
+| Host Linux | `curl http://127.0.0.1:8003/api/health` responde JSON |
+| Otro equipo personal con Tailscale | La URL `*.ts.net:8443/api/health` responde JSON HTTPS |
 | Equipo fuera de la tailnet | No puede alcanzar la API privada |
 | Cualquier `PATCH`, `POST` o `DELETE` | Respuesta `405` |
 | Origen distinto de Vercel | Sin encabezado CORS de autorización |
 
 ## 9. Límites de la Fase 1
 
-La base almacena `categories.position` y `projects.position` para el orden manual, junto con categoría, siguiente tarea, bloqueo y notas. En esta fase la API los **lee** y un comando local importa la organización; la escritura y el arrastrar/soltar desde la PWA se agregarán después de validar Tailscale, las ACL y la auditoría. La integración del frontend con `VITE_CIR_PRIVATE_API_URL` también se deja para la siguiente fase, evitando publicar la URL privada o activar edición antes de que la red sea comprobada.
+La base almacena `categories.position` y `projects.position` para el orden manual, junto con categoría, siguiente tarea, bloqueo y notas. En esta fase la API los **lee** y un comando local importa la organización; la escritura y el arrastrar/soltar desde la PWA se agregarán después de validar Tailscale, las ACL y la auditoría. La PWA ya incorpora `VITE_CIR_PRIVATE_API_URL`: si alcanza la tailnet, consume los datos privados en modo de solo lectura; si no, conserva el backend público como fallback.
 
 ## Referencias
 
