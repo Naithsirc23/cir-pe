@@ -11,21 +11,30 @@ Este servicio conserva la información privada de CIR Projects en SQLite y ofrec
 | Node.js 22.5 o posterior | `node --version` |
 | pnpm mediante Corepack | `corepack enable && pnpm --version` |
 | Tailscale instalado e iniciado | `tailscale status` |
-| Repositorio de CIR Projects clonado | `git clone https://github.com/Naithsirc23/cir-pe.git` |
+| Directorio de instalación | `/home/cris/GITHUBS/DASHBOARDCIR` |
 
 SQLite utiliza `node:sqlite`, incluido en Node.js moderno; no se instala un motor de base de datos externo. La base se genera por defecto en `private-service/data/cir-projects.sqlite` y está excluida de Git.
 
 ## 2. Instalar y preparar la base local
 
-Ejecuta los siguientes comandos en el directorio del repositorio. Si ya lo tienes clonado, omite el primer comando.
+Ejecuta los siguientes comandos en tu computador Linux. La copia local del repositorio es necesaria porque ahí viven el servicio Node, los scripts y la base SQLite; Vercel solo distribuye la interfaz web pública.
 
 ```bash
-git clone https://github.com/Naithsirc23/cir-pe.git ~/src/cir-pe
-cd ~/src/cir-pe
+mkdir -p /home/cris/GITHUBS
+git clone https://github.com/Naithsirc23/cir-pe.git /home/cris/GITHUBS/DASHBOARDCIR
+cd /home/cris/GITHUBS/DASHBOARDCIR
 corepack enable
 pnpm install --frozen-lockfile
 pnpm private:db:init
 pnpm private:db:sync-github
+```
+
+Si ya existe esa copia local, no ejecutes `git clone` de nuevo. Actualízala así:
+
+```bash
+cd /home/cris/GITHUBS/DASHBOARDCIR
+git pull --ff-only
+pnpm install --frozen-lockfile
 ```
 
 La sincronización inicial obtiene los repositorios públicos de `Naithsirc23` y no incorpora un token de GitHub. Si en el futuro requieres repositorios privados, configura `GITHUB_TOKEN` solo en el archivo de entorno local, nunca en el frontend ni en Git.
@@ -58,15 +67,15 @@ mkdir -p ~/.config/cir-private-api
 chmod 700 ~/.config/cir-private-api
 cat > ~/.config/cir-private-api/env <<'EOF'
 CIR_PRIVATE_PORT=8002
-CIR_PRIVATE_DB_PATH=/home/REEMPLAZA_USUARIO/src/cir-pe/private-service/data/cir-projects.sqlite
+CIR_PRIVATE_DB_PATH=/home/cris/GITHUBS/DASHBOARDCIR/private-service/data/cir-projects.sqlite
 CIR_GITHUB_USERNAME=Naithsirc23
 CIR_PRIVATE_ALLOWED_ORIGINS=https://cir-projects-dashboard.vercel.app
-CIR_PRIVATE_ORGANIZATION_PATH=/home/REEMPLAZA_USUARIO/.config/cir-private-api/organization.json
+CIR_PRIVATE_ORGANIZATION_PATH=/home/cris/.config/cir-private-api/organization.json
 EOF
 chmod 600 ~/.config/cir-private-api/env
 ```
 
-Sustituye `REEMPLAZA_USUARIO` por el usuario Linux real. No pongas secretos en `CIR_PRIVATE_ALLOWED_ORIGINS`; solo admite orígenes web públicos permitidos. Si se usa un token de GitHub, añade una línea `GITHUB_TOKEN=...` con permisos mínimos y conserva `chmod 600`.
+La configuración está preparada para el usuario `cris` y la ruta `/home/cris/GITHUBS/DASHBOARDCIR`. No pongas secretos en `CIR_PRIVATE_ALLOWED_ORIGINS`; solo admite orígenes web públicos permitidos. Si se usa un token de GitHub, añade una línea `GITHUB_TOKEN=...` con permisos mínimos y conserva `chmod 600`.
 
 ## 5. Probar la API exclusivamente en localhost
 
@@ -92,11 +101,11 @@ Los tres primeros comandos deben devolver JSON. El último debe responder `405 M
 
 ## 6. Mantener el servicio activo con systemd de usuario
 
-El archivo de unidad se incluye en `private-service/systemd/cir-private-api.service`. Sustituye el marcador de usuario antes de instalarlo.
+El archivo de unidad ya está preparado para `/home/cris/GITHUBS/DASHBOARDCIR`.
 
 ```bash
 mkdir -p ~/.config/systemd/user
-sed "s/REEMPLAZA_USUARIO/$USER/g" private-service/systemd/cir-private-api.service > ~/.config/systemd/user/cir-private-api.service
+cp private-service/systemd/cir-private-api.service ~/.config/systemd/user/cir-private-api.service
 systemctl --user daemon-reload
 systemctl --user enable --now cir-private-api.service
 systemctl --user status cir-private-api.service

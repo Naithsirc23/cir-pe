@@ -5,9 +5,9 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/REEMPLAZA_USUARIO/src/cir-pe
-EnvironmentFile=/home/REEMPLAZA_USUARIO/.config/cir-private-api/env
-ExecStart=/usr/bin/env pnpm private:api
+WorkingDirectory=/home/cris/GITHUBS/DASHBOARDCIR
+EnvironmentFile=/home/cris/.config/cir-private-api/env
+ExecStart=/usr/bin/env bash -lc 'exec pnpm private:api'
 Restart=on-failure
 RestartSec=5
 NoNewPrivileges=true

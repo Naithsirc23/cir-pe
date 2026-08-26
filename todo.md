@@ -62,3 +62,4 @@
 - [x] Añadir healthcheck, límites de respuesta y pruebas del contrato privado.
 - [x] Documentar la configuración de Tailscale Serve y la validación desde dispositivos autorizados.
 - [ ] Ejecutar la instalación y validar Tailscale Serve en el computador Linux personal autorizado.
+- [x] Adaptar el runbook y la unidad systemd a `/home/cris/GITHUBS/DASHBOARDCIR`.
