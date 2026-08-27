@@ -1,37 +1,132 @@
-import ProjectCard from "@/components/ProjectCard";
-import { QueryErrorNotice } from "@/components/AccessNotice";
-import { Button } from "@/components/ui/button";
-import { type DashboardProject, relativeDate } from "@/lib/project-filters";
-import { useDashboardData } from "@/lib/private-dashboard";
-import { trpc } from "@/lib/trpc";
-import { ArrowUpRight, CheckCircle2, CirclePause, CloudDownload, FolderGit2, LoaderCircle, Sparkles, UploadCloud } from "lucide-react";
-import { Link } from "wouter";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Check,
+  Code2,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Sparkles,
+  WandSparkles,
+} from "lucide-react";
 
-function Metric({ label, value, tone, icon: Icon }: { label: string; value: number; tone: string; icon: typeof FolderGit2 }) {
-  return <div className="metric-card"><div><p>{label}</p><strong>{value}</strong></div><span className={`metric-icon ${tone}`}><Icon className="h-5 w-5" /></span></div>;
-}
+const projects = [
+  {
+    number: "01",
+    name: "CIR Dashboard",
+    type: "Product system · Dashboard",
+    description:
+      "Un espacio de trabajo para convertir repositorios dispersos en proyectos visibles, organizables y accionables.",
+    tags: ["React", "TypeScript", "GitHub API", "Product UX"],
+    href: "https://dashboard-cir.vercel.app",
+    repo: "https://github.com/Naithsirc23/cir-dashboard",
+    tone: "sage",
+    status: "Demo disponible",
+  },
+  {
+    number: "02",
+    name: "ELICONTABLE",
+    type: "Business tool · Sistema interno",
+    description:
+      "Una herramienta orientada a simplificar operaciones y dar estructura a procesos que normalmente viven en hojas de cálculo.",
+    tags: ["TypeScript", "Web app", "Workflow", "Data"],
+    href: "#contacto",
+    repo: "#contacto",
+    tone: "ink",
+    status: "Caso privado",
+  },
+  {
+    number: "03",
+    name: "Pinas Adventures",
+    type: "Interactive product · Juego web",
+    description:
+      "Una experiencia lúdica que demuestra cómo combinar narrativa, interacción y tecnología para construir productos memorables.",
+    tags: ["Game design", "JavaScript", "Interaction", "Storytelling"],
+    href: "#contacto",
+    repo: "https://github.com/Naithsirc23",
+    tone: "coral",
+    status: "En selección",
+  },
+];
+
+const capabilities = [
+  "Prototipos que se pueden usar",
+  "Interfaces claras y accesibles",
+  "Automatización de procesos",
+  "IA aplicada al trabajo real",
+];
 
 export default function Home() {
-  const dashboard = useDashboardData();
-  const sync = trpc.projects.sync.useMutation({ onSuccess: () => dashboard.refetch() });
-  const projects = dashboard.projects as DashboardProject[];
-  const active = projects.filter(project => project.status === "activo").length;
-  const paused = projects.filter(project => project.status === "pausado").length;
-  const published = projects.filter(project => project.status === "publicado").length;
-  const milestones = projects.filter(project => project.milestoneAt && project.milestoneAt >= new Date()).sort((a, b) => Number(a.milestoneAt) - Number(b.milestoneAt));
-  const attention = projects.filter(project => project.status === "en riesgo" || project.priority === "alta").slice(0, 3);
+  return (
+    <div className="portfolio-site">
+      <header className="site-header">
+        <a className="wordmark" href="#inicio" aria-label="Cristhian S.I.R. — inicio">
+          <span className="wordmark-mark">C</span>
+          <span>Cristhian S.I.R.</span>
+        </a>
+        <nav className="site-nav" aria-label="Navegación principal">
+          <a href="#proyectos">Proyectos</a>
+          <a href="#enfoque">Enfoque</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a className="nav-cta" href="#contacto">Hablemos <ArrowUpRight size={15} /></a>
+        </nav>
+      </header>
 
-  return <div className="page-enter">
-    <header className="page-heading overview-heading">
-      <div><p className="eyebrow"><Sparkles className="h-3.5 w-3.5" />TU ESPACIO DE PROYECTOS</p><h1>Todo lo que estás <span>construyendo.</span></h1><p className="page-subtitle">Una visión clara para decidir qué merece tu atención ahora.</p></div>
-      {dashboard.source === "private" ? <span className="rounded-full bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700">Datos privados · solo lectura</span> : <Button onClick={() => sync.mutate()} disabled={sync.isPending} className="primary-action"><CloudDownload className={`h-4 w-4 ${sync.isPending ? "animate-spin" : ""}`} />{sync.isPending ? "Sincronizando..." : "Sincronizar GitHub"}</Button>}
-    </header>
-    {dashboard.isLoading ? <DashboardLoading /> : dashboard.isError ? <QueryErrorNotice onRetry={() => dashboard.refetch()} /> : !projects.length ? <EmptySync onSync={() => sync.mutate()} pending={sync.isPending} /> : <>
-      <section className="metrics-grid" aria-label="Indicadores clave"><Metric label="Proyectos activos" value={active} tone="indigo" icon={FolderGit2} /><Metric label="En pausa" value={paused} tone="amber" icon={CirclePause} /><Metric label="Publicados" value={published} tone="green" icon={CheckCircle2} /><Metric label="Próximos hitos" value={milestones.length} tone="violet" icon={UploadCloud} /></section>
-      <section className="overview-columns"><div className="overview-section"><div className="section-heading"><div><p className="eyebrow">PROYECTOS DESTACADOS</p><h2>En el foco</h2></div><Link href="/proyectos" className="subtle-link">Ver todos <ArrowUpRight className="h-4 w-4" /></Link></div><div className="project-grid compact">{projects.slice(0, 4).map(project => <ProjectCard key={project.id} project={project} readOnly={dashboard.source === "private"} />)}</div></div><aside className="overview-aside"><section className="attention-card"><p className="eyebrow">ATENCIÓN RECOMENDADA</p><h2>Próximos movimientos</h2>{attention.length ? <div className="attention-list">{attention.map(project => <Link href={`/proyectos/${project.id}`} key={project.id} className="attention-item"><span className="attention-initial">{project.name[0]}</span><span><strong>{project.name}</strong><small>{project.nextAction || "Revisar estado y siguiente acción"}</small></span><ArrowUpRight className="h-4 w-4" /></Link>)}</div> : <p className="empty-inline">No hay alertas. Agrega prioridades o acciones para que esta sección te guíe.</p>}</section><section className="activity-snapshot"><div className="section-heading"><div><p className="eyebrow">PULSO RECIENTE</p><h2>Actividad GitHub</h2></div></div>{projects.slice(0, 4).map(project => <div className="activity-row" key={project.id}><span className="activity-line-dot" /><div><strong>{project.name}</strong><p>Actualizado {relativeDate(project.githubPushedAt)}</p></div></div>)}</section></aside></section>
-    </>}
-  </div>;
+      <main>
+        <section className="hero" id="inicio">
+          <div className="hero-copy">
+            <p className="kicker"><span className="live-dot" /> Disponible para oportunidades remotas</p>
+            <h1>Construyo productos digitales con <em>curiosidad</em> y criterio.</h1>
+            <p className="hero-lede">
+              Soy <strong>Cristhian Saúl Infante Rodríguez</strong>, Product Builder y AI-assisted Developer. Transformo ideas complejas en experiencias web útiles, claras y listas para crecer.
+            </p>
+            <div className="hero-actions">
+              <a className="button button-dark" href="#proyectos">Ver proyectos <ArrowDown size={16} /></a>
+              <a className="text-link" href="https://github.com/Naithsirc23" target="_blank" rel="noreferrer">Explorar GitHub <ExternalLink size={15} /></a>
+            </div>
+          </div>
+          <div className="hero-aside" aria-label="Perfil profesional">
+            <div className="portrait-placeholder"><span>CSI</span><span className="portrait-caption">product / code / context</span></div>
+            <div className="hero-note"><Sparkles size={16} /><span>Entre lo humano y lo técnico.</span></div>
+          </div>
+        </section>
+
+        <section className="signal-bar" aria-label="Áreas de trabajo">
+          <span>Producto digital</span><span>Desarrollo web</span><span>IA aplicada</span><span>Automatización</span><span>Perú · remoto</span>
+        </section>
+
+        <section className="projects-section section" id="proyectos">
+          <div className="section-intro">
+            <div><p className="eyebrow">Muestras de trabajo</p><h2>Ideas convertidas<br /><em>en algo real.</em></h2></div>
+            <p>Una selección de proyectos donde exploro cómo diseñar, construir y mejorar productos digitales con recursos concretos.</p>
+          </div>
+          <div className="project-list">
+            {projects.map(project => <article className={`project-card ${project.tone}`} key={project.name}>
+              <div className="project-number">{project.number}</div>
+              <div className="project-main">
+                <div className="project-heading"><div><p className="project-type">{project.type}</p><h3>{project.name}</h3></div><span className="project-status">{project.status}</span></div>
+                <p className="project-description">{project.description}</p>
+                <div className="project-bottom"><div className="tag-list">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div><div className="project-links"><a href={project.href} target={project.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">{project.href.startsWith("http") ? "Ver producto" : "Solicitar acceso"} <ArrowUpRight size={15} /></a><a className="repo-link" href={project.repo} target={project.repo.startsWith("http") ? "_blank" : undefined} rel="noreferrer"><Github size={15} /> Código</a></div></div>
+              </div>
+            </article>)}
+          </div>
+        </section>
+
+        <section className="split-section section" id="enfoque">
+          <div className="split-label"><p className="eyebrow">Cómo trabajo</p><span className="section-index">02 / 04</span></div>
+          <div className="split-content"><h2>Del problema a la primera versión, <em>sin perder de vista a la persona.</em></h2><p>Mi recorrido por la Filosofía, la Psicología Social, la Gestión Pública y el servicio al ciudadano me ayuda a mirar los productos desde más de un ángulo. Construyo con tecnología, pero decido con contexto.</p><div className="capability-grid">{capabilities.map((item, index) => <div className="capability" key={item}><span>0{index + 1}</span><Check size={16} />{item}</div>)}</div></div>
+        </section>
+
+        <section className="about-section section" id="sobre-mi">
+          <div className="about-card"><p className="eyebrow">Sobre mí</p><h2>Una mezcla poco convencional. <em>Una ventaja práctica.</em></h2><p>Estudié Filosofía, culminé Psicología Social y cursé una Maestría en Gestión Pública. Hoy trabajo como servidor público en Migraciones, en el Aeropuerto Jorge Chávez, y en mi tiempo libre construyo productos web con asistencia de IA.</p><p>No me defino solo por el código. Me interesa entender el problema, ordenar la experiencia y entregar algo que funcione en el mundo real.</p><div className="about-meta"><span><MapPin size={15} /> Lima, Perú</span><span><WandSparkles size={15} /> AI-assisted development</span></div></div>
+        </section>
+
+        <section className="contact-section section" id="contacto"><div className="contact-inner"><p className="eyebrow">¿Construimos algo?</p><h2>Estoy buscando mi próxima oportunidad <em>remota.</em></h2><p>Si buscas a alguien con mirada de producto, sensibilidad por las personas y capacidad para convertir una idea en una primera versión, conversemos.</p><div className="contact-actions"><a className="button button-light" href="https://github.com/Naithsirc23" target="_blank" rel="noreferrer"><Mail size={16} /> Escribirme por GitHub</a><a className="contact-social" href="https://www.linkedin.com" target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ExternalLink size={14} /></a></div></div></section>
+      </main>
+
+      <footer className="site-footer"><span>© 2026 Cristhian S.I.R.</span><span>Hecho con intención, código y café.</span><a href="#inicio">Volver arriba ↑</a></footer>
+    </div>
+  );
 }
-
-function EmptySync({ onSync, pending }: { onSync: () => void; pending: boolean }) { return <section className="empty-state"><span className="empty-state-icon"><FolderGit2 className="h-7 w-7" /></span><p className="eyebrow">CONECTA TU ESPACIO</p><h2>Tus repositorios están a un paso.</h2><p>Importa los repositorios de <strong>Naithsirc23</strong> para convertirlos en proyectos organizables.</p><Button onClick={onSync} disabled={pending} className="primary-action">{pending ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <CloudDownload className="h-4 w-4" />}{pending ? "Sincronizando..." : "Importar desde GitHub"}</Button></section>; }
-function DashboardLoading() { return <div className="loading-state"><LoaderCircle className="h-5 w-5 animate-spin" />Cargando tu espacio de trabajo...</div>; }
