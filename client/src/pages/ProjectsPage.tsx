@@ -24,7 +24,7 @@ function ProjectDropZone({ group, categories, canOrganize, assigningCategory, on
 
 function SortableProjectCard({ project, categories, canOrganize, assigningCategory, onAssignCategory }: { project: DashboardProject; categories: ReturnType<typeof useDashboardData>["categories"]; canOrganize: boolean; assigningCategory: boolean; onAssignCategory: (projectId: number, categoryId: number | null) => void }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: `project:${project.id}`, disabled: !canOrganize, data: { categoryId: project.categoryId } });
-  return <div ref={setNodeRef} style={{ transform: CSS.Transform.toString(transform), transition }} className={isDragging ? "sortable-project is-dragging" : "sortable-project"} {...attributes} {...listeners}><ProjectCard project={project} readOnly={true} categories={categories} canOrganize={canOrganize} assigningCategory={assigningCategory} onAssignCategory={categoryId => onAssignCategory(project.id, categoryId)} /></div>;
+  return <div ref={setNodeRef} style={{ transform: CSS.Transform.toString(transform), transition }} className={isDragging ? "sortable-project is-dragging" : "sortable-project"}><ProjectCard project={project} readOnly={true} categories={categories} canOrganize={canOrganize} assigningCategory={assigningCategory} onAssignCategory={categoryId => onAssignCategory(project.id, categoryId)} dragHandleProps={{ ...attributes, ...listeners }} /></div>;
 }
 
 export default function ProjectsPage() {

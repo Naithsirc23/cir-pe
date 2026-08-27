@@ -4,7 +4,7 @@ import { type DashboardProject, relativeDate, statusLabel } from "@/lib/project-
 import type { DashboardCategory } from "@/lib/private-dashboard";
 import { loadProjectTracking, saveProjectTracking, type ProjectTracking } from "@/lib/project-tracking";
 import { trpc } from "@/lib/trpc";
-import { AlertTriangle, ArrowUpRight, Check, CircleDot, Github, Layers3, LockKeyhole, PencilLine, X } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, Check, CircleDot, Github, GripVertical, Layers3, LockKeyhole, PencilLine, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Link } from "wouter";
@@ -16,7 +16,7 @@ const statusStyles = {
   "en riesgo": "status-risk",
 };
 
-export default function ProjectCard({ project, readOnly = false, categories = [], canOrganize = false, onAssignCategory, assigningCategory = false }: { project: DashboardProject; readOnly?: boolean; categories?: DashboardCategory[]; canOrganize?: boolean; onAssignCategory?: (categoryId: number | null) => void; assigningCategory?: boolean }) {
+export default function ProjectCard({ project, readOnly = false, categories = [], canOrganize = false, onAssignCategory, assigningCategory = false, dragHandleProps }: { project: DashboardProject; readOnly?: boolean; categories?: DashboardCategory[]; canOrganize?: boolean; onAssignCategory?: (categoryId: number | null) => void; assigningCategory?: boolean; dragHandleProps?: React.ButtonHTMLAttributes<HTMLButtonElement> }) {
   const [isEditing, setIsEditing] = useState(false);
   const [tracking, setTracking] = useState<ProjectTracking>(() => loadProjectTracking(project.id, { nextAction: project.nextAction, blockerReason: project.blockerReason }));
   const [draft, setDraft] = useState<ProjectTracking>(tracking);
@@ -52,7 +52,7 @@ export default function ProjectCard({ project, readOnly = false, categories = []
             </div>
           </div>
         </div>
-        <Badge className={`status-badge ${statusStyles[project.status]}`}>{statusLabel(project.status)}</Badge>
+        <div className="project-card-actions">{canOrganize && dragHandleProps && <button type="button" className="project-drag-handle" {...dragHandleProps} aria-label={`Arrastrar ${project.name} para organizar`} title="Arrastra para organizar"><GripVertical className="h-4 w-4" /><span>Ordenar</span></button>}<Badge className={`status-badge ${statusStyles[project.status]}`}>{statusLabel(project.status)}</Badge></div>
       </div>
 
       <p className="project-description">{project.description || "Aún no hay una descripción para este proyecto."}</p>

@@ -43,4 +43,10 @@ describe("ProjectCard tracking", () => {
     );
     expect(JSON.parse(window.localStorage.getItem("cir-project-tracking:41") ?? "{}")).toEqual({ nextAction: "Revisar demo", blockerReason: "Esperando acceso" });
   });
+
+  it("expone un asa exclusiva y etiquetada cuando la organización está habilitada", () => {
+    render(<ProjectCard project={project} canOrganize categories={[{ id: 3, name: "Herramientas", color: "#0EA5E9" }]} dragHandleProps={{ onPointerDown: vi.fn() }} />);
+    expect(screen.getByRole("button", { name: "Arrastrar KRONOS para organizar" })).toBeTruthy();
+    expect(screen.getByLabelText("Carpeta")).toBeTruthy();
+  });
 });

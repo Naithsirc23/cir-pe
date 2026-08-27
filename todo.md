@@ -89,3 +89,4 @@
 - [ ] Activar la escritura privada y validar en el host Linux la asignación y el orden desde la PWA.
 - [ ] Implementar autorización fuerte de escritura con capacidades de Tailscale en lugar de depender solo de CORS y una bandera local.
 - [ ] Validar desde la PWA la asignación, el arrastrar y soltar, el orden de categorías y el manejo de errores contra la API privada habilitada.
+- [x] Añadir un asa de arrastre visible, accesible y exclusiva para organizar las cards.
