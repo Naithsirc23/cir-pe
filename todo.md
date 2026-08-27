@@ -75,3 +75,9 @@
 - [x] Diseñar un sistema visual móvil premium con texturas, jerarquía y transiciones accesibles.
 - [x] Rediseñar las vistas móviles de proyectos, roadmap y actividad con animaciones de interfaz útiles.
 - [ ] Validar el rediseño en móvil, pruebas y producción de Vercel.
+- [x] Corregir la detección responsive para separar el shell de escritorio y el shell móvil.
+- [x] Ajustar jerarquía, navegación y densidad de contenido específicas para escritorio.
+- [ ] Validar en ambos formatos antes de actualizar el despliegue de Vercel.
+- [x] Agrupar las cards de proyectos en paneles desplegables por categoría.
+- [x] Mostrar conteos, color y estado expandido de cada categoría sin romper los filtros.
+- [ ] Validar los paneles desplegables en escritorio y móvil antes de publicar.
