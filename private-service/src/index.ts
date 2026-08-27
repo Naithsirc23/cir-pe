@@ -7,6 +7,8 @@ const allowedOrigins = (process.env.CIR_PRIVATE_ALLOWED_ORIGINS ?? "https://cir-
   .split(",")
   .map(origin => origin.trim())
   .filter(Boolean);
+const writeEnabled = process.env.CIR_PRIVATE_WRITE_ENABLED === "true";
+const writeCapability = process.env.CIR_PRIVATE_WRITE_CAPABILITY ?? "cir.pe/cir-projects-organize";
 
 if (!Number.isInteger(port) || port < 1024 || port > 65535) {
   throw new Error("CIR_PRIVATE_PORT debe ser un puerto válido entre 1024 y 65535.");
@@ -14,10 +16,10 @@ if (!Number.isInteger(port) || port < 1024 || port > 65535) {
 
 async function main() {
   const store = new PrivateStore(databasePath);
-  const server = createPrivateApi({ store, allowedOrigins });
+  const server = createPrivateApi({ store, allowedOrigins, writeEnabled, writeCapability });
 
   await listenPrivateApi(server, port);
-  console.info(`[cir-private-api] escuchando solo en http://127.0.0.1:${port}`);
+  console.info(`[cir-private-api] escuchando solo en http://127.0.0.1:${port} (${writeEnabled ? "organización editable" : "solo lectura"})`);
 
   function shutdown(signal: string) {
     console.info(`[cir-private-api] recibiendo ${signal}; cerrando.`);

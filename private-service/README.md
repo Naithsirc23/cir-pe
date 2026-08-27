@@ -1,8 +1,8 @@
 # Servicio local privado de CIR Projects — Fase 1
 
-Este servicio conserva la información privada de CIR Projects en SQLite y ofrece únicamente rutas de lectura. Debe ejecutarse en tu computador Linux, no en Vercel ni en una instancia temporal. En el host de Cris se vincula de forma fija a `127.0.0.1:8003`, porque el puerto `8002` pertenece a otro servicio local; Tailscale Serve es la única capa que debe permitir acceso desde tus otros dispositivos.
+Este servicio conserva la información privada de CIR Projects en SQLite y ofrece lectura y, cuando se habilita explícitamente, organización manual. Debe ejecutarse en tu computador Linux, no en Vercel ni en una instancia temporal. En el host de Cris se vincula de forma fija a `127.0.0.1:8003`, porque el puerto `8002` pertenece a otro servicio local; Tailscale Serve es la única capa que debe permitir acceso desde tus otros dispositivos.
 
-> La Fase 1 no modifica categorías, orden ni seguimiento a través de la red. Su objetivo es comprobar la base local, el contrato de lectura y la conectividad privada antes de habilitar escritura en una etapa posterior.
+> La lectura privada está disponible por defecto. La organización por red exige una bandera explícita, un origen web permitido y acceso a tu tailnet; así puedes mantener el modo de solo lectura cuando lo prefieras.
 
 ## 1. Requisitos del host Linux
 
@@ -48,7 +48,7 @@ cp private-service/organization.example.json ~/.config/cir-private-api/organizat
 chmod 600 ~/.config/cir-private-api/organization.json
 ```
 
-Cada proyecto debe usar el valor numérico de `githubId`. Puedes localizarlo tras la sincronización con `curl http://127.0.0.1:8002/api/projects` cuando la API esté activa, o directamente en la respuesta pública de GitHub. Ejecuta la importación local después de editar el archivo:
+Cada proyecto debe usar el valor numérico de `githubId`. Puedes localizarlo tras la sincronización con `curl http://127.0.0.1:8003/api/projects` cuando la API esté activa, o directamente en la respuesta pública de GitHub. Ejecuta la importación local después de editar el archivo:
 
 ```bash
 set -a
@@ -71,13 +71,32 @@ CIR_PRIVATE_DB_PATH=/home/cris/GITHUBS/DASHBOARDCIR/private-service/data/cir-pro
 CIR_GITHUB_USERNAME=Naithsirc23
 CIR_PRIVATE_ALLOWED_ORIGINS=https://cir-projects-dashboard.vercel.app
 CIR_PRIVATE_ORGANIZATION_PATH=/home/cris/.config/cir-private-api/organization.json
+CIR_PRIVATE_WRITE_ENABLED=false
+CIR_PRIVATE_WRITE_CAPABILITY=cir.pe/cir-projects-organize
 EOF
 chmod 600 ~/.config/cir-private-api/env
 ```
 
 La configuración está preparada para el usuario `cris` y la ruta `/home/cris/GITHUBS/DASHBOARDCIR`. No pongas secretos en `CIR_PRIVATE_ALLOWED_ORIGINS`; solo admite orígenes web públicos permitidos. Si se usa un token de GitHub, añade una línea `GITHUB_TOKEN=...` con permisos mínimos y conserva `chmod 600`.
 
-## 5. Probar la API exclusivamente en localhost
+## 5. Habilitar la organización manual desde la PWA
+
+La organización editable está apagada por defecto. Antes de activarla, configura una capacidad de aplicación de Tailscale. Consulta el archivo [`tailscale-policy.example.hujson`](./tailscale-policy.example.hujson) y añade sus secciones a tu política existente sin reemplazarla. Sustituye el usuario de ejemplo por tu usuario real de Tailscale; la regla concede solo TCP 8443 y la capacidad `cir.pe/cir-projects-organize` al nodo `cir-private-api`.
+
+> Las capacidades de aplicación requieren Tailscale 1.92 o posterior. Comprueba la versión con `tailscale version` y actualiza Tailscale antes de continuar si fuera necesario. No actives la bandera de escritura hasta que la política haya sido guardada sin errores.
+
+Cuando la política esté activa, cambia la bandera local, reinicia el servicio y vuelve a crear el listener de Serve aceptando únicamente esa capacidad:
+
+```bash
+sed -i 's/^CIR_PRIVATE_WRITE_ENABLED=.*/CIR_PRIVATE_WRITE_ENABLED=true/' ~/.config/cir-private-api/env
+systemctl --user restart cir-private-api.service
+tailscale serve --https=8443 --accept-app-caps=cir.pe/cir-projects-organize --bg http://127.0.0.1:8003
+curl --noproxy '*' https://papakaj-hpnotebook.tailae879d.ts.net:8443/api/health
+```
+
+El healthcheck debe informar `"readOnlyMode":false`. La PWA solo permite estas escrituras cuando se cumplen a la vez: el endpoint privado está disponible por Tailscale, el navegador se carga desde `https://cir-projects-dashboard.vercel.app`, `CIR_PRIVATE_WRITE_ENABLED=true` y Serve adjunta la capacidad solicitada en la política. Para volver a bloquear cambios remotos, restablece `false`, reinicia el servicio y aplica de nuevo Serve sin `--accept-app-caps`.
+
+## 6. Probar la API exclusivamente en localhost
 
 Primero carga las variables locales y arranca el servicio en una terminal.
 
@@ -94,12 +113,12 @@ En una segunda terminal se validan los endpoints.
 curl http://127.0.0.1:8003/api/health
 curl http://127.0.0.1:8003/api/categories
 curl 'http://127.0.0.1:8003/api/projects?limit=20'
-curl -X PATCH -i http://127.0.0.1:8003/api/projects
+curl -X POST -i http://127.0.0.1:8003/api/projects
 ```
 
-Los tres primeros comandos deben devolver JSON. El último debe responder `405 Method Not Allowed` y `Allow: GET, OPTIONS`, confirmando que el servicio sigue en modo de solo lectura.
+Los tres primeros comandos deben devolver JSON. El último debe responder `405 Method Not Allowed`. Con la bandera de escritura desactivada, un `PATCH` o `PUT` responderá `403`.
 
-## 6. Mantener el servicio activo con systemd de usuario
+## 7. Mantener el servicio activo con systemd de usuario
 
 El archivo de unidad ya está preparado para `/home/cris/GITHUBS/DASHBOARDCIR`.
 
@@ -119,7 +138,7 @@ sudo loginctl enable-linger "$USER"
 
 Los diagnósticos se consultan con `journalctl --user -u cir-private-api.service -f`. Detén el servicio con `systemctl --user disable --now cir-private-api.service`.
 
-## 7. Publicar solo dentro de tu tailnet mediante Tailscale Serve
+## 8. Publicar solo dentro de tu tailnet mediante Tailscale Serve
 
 Después de confirmar el healthcheck local, conecta el host a Tailscale y configura el proxy. No uses Funnel, no abras puertos en el router y no cambies el bind de la API.
 
@@ -141,19 +160,21 @@ Para retirar el acceso privado sin borrar la base ni detener la API, ejecuta:
 tailscale serve --https=8443 off
 ```
 
-## 8. Pruebas de aceptación
+## 9. Pruebas de aceptación
 
 | Escenario | Resultado correcto |
 |---|---|
 | Host Linux | `curl http://127.0.0.1:8003/api/health` responde JSON |
 | Otro equipo personal con Tailscale | La URL `*.ts.net:8443/api/health` responde JSON HTTPS |
 | Equipo fuera de la tailnet | No puede alcanzar la API privada |
-| Cualquier `PATCH`, `POST` o `DELETE` | Respuesta `405` |
+| `PATCH` o `PUT` con la escritura desactivada | Respuesta `403` |
+| `PATCH` o `PUT` sin la capacidad Tailscale configurada | Respuesta `403` |
+| Organización desde la PWA autorizada con escritura activada | Categoría u orden se guardan en SQLite |
 | Origen distinto de Vercel | Sin encabezado CORS de autorización |
 
-## 9. Límites de la Fase 1
+## 10. Límites y controles
 
-La base almacena `categories.position` y `projects.position` para el orden manual, junto con categoría, siguiente tarea, bloqueo y notas. En esta fase la API los **lee** y un comando local importa la organización; la escritura y el arrastrar/soltar desde la PWA se agregarán después de validar Tailscale, las ACL y la auditoría. La PWA ya incorpora `VITE_CIR_PRIVATE_API_URL`: si alcanza la tailnet, consume los datos privados en modo de solo lectura; si no, conserva el backend público como fallback.
+La base almacena `categories.position` y `projects.position` para el orden manual, junto con categoría, siguiente tarea, bloqueo y notas. La PWA ya incorpora `VITE_CIR_PRIVATE_API_URL`: si alcanza la tailnet, usa los datos privados y permite organizar cuando la bandera local está activa; si no, conserva el backend público como fallback. La edición de siguiente tarea, bloqueos, estado y prioridades seguirá en el plano privado en una siguiente etapa.
 
 ## Referencias
 

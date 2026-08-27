@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { type DashboardProject, relativeDate, statusLabel } from "@/lib/project-filters";
+import type { DashboardCategory } from "@/lib/private-dashboard";
 import { loadProjectTracking, saveProjectTracking, type ProjectTracking } from "@/lib/project-tracking";
 import { trpc } from "@/lib/trpc";
 import { AlertTriangle, ArrowUpRight, Check, CircleDot, Github, Layers3, LockKeyhole, PencilLine, X } from "lucide-react";
@@ -15,7 +16,7 @@ const statusStyles = {
   "en riesgo": "status-risk",
 };
 
-export default function ProjectCard({ project, readOnly = false }: { project: DashboardProject; readOnly?: boolean }) {
+export default function ProjectCard({ project, readOnly = false, categories = [], canOrganize = false, onAssignCategory, assigningCategory = false }: { project: DashboardProject; readOnly?: boolean; categories?: DashboardCategory[]; canOrganize?: boolean; onAssignCategory?: (categoryId: number | null) => void; assigningCategory?: boolean }) {
   const [isEditing, setIsEditing] = useState(false);
   const [tracking, setTracking] = useState<ProjectTracking>(() => loadProjectTracking(project.id, { nextAction: project.nextAction, blockerReason: project.blockerReason }));
   const [draft, setDraft] = useState<ProjectTracking>(tracking);
@@ -84,6 +85,7 @@ export default function ProjectCard({ project, readOnly = false }: { project: Da
         )}
         <span className="category-chip neutral"><CircleDot className="h-3 w-3" />{relativeDate(project.githubPushedAt)}</span>
       </div>
+      {canOrganize && <label className="category-assignment"><span>Carpeta</span><select value={project.categoryId ?? "none"} disabled={assigningCategory} onChange={event => onAssignCategory?.(event.target.value === "none" ? null : Number(event.target.value))}><option value="none">Sin categoría</option>{categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}</select></label>}
 
       <div className="mt-6 flex items-center justify-between border-t border-border/70 pt-4">
         <a href={project.repositoryUrl} target="_blank" rel="noreferrer" className="project-link" aria-label={`Abrir ${project.name} en GitHub`}>

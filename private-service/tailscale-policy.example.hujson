@@ -1,0 +1,19 @@
+// Añade estas secciones a tu política existente de Tailscale; no reemplaces la política completa.
+// Sustituye <tu-usuario@dominio> por el usuario que debe poder organizar CIR Projects.
+{
+  "hosts": {
+    "cir-private-api": "100.108.133.120"
+  },
+  "grants": [
+    {
+      "src": ["<tu-usuario@dominio>"],
+      "dst": ["cir-private-api"],
+      "ip": ["tcp:8443"],
+      "app": {
+        "cir.pe/cir-projects-organize": [
+          { "actions": ["assign-category", "reorder-projects", "reorder-categories"] }
+        ]
+      }
+    }
+  ]
+}

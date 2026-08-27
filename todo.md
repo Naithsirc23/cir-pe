@@ -81,3 +81,11 @@
 - [x] Agrupar las cards de proyectos en paneles desplegables por categoría.
 - [x] Mostrar conteos, color y estado expandido de cada categoría sin romper los filtros.
 - [ ] Validar los paneles desplegables en escritorio y móvil antes de publicar.
+- [x] Diseñar las escrituras privadas y los controles de seguridad para la organización manual.
+- [x] Añadir asignación de categoría y orden persistente de proyectos en SQLite.
+- [x] Implementar arrastrar y soltar para proyectos y alternativa accesible en móvil.
+- [x] Permitir reordenar categorías y guardar el orden en el plano privado.
+- [x] Probar persistencia, interacción y recuperación ante errores de organización.
+- [ ] Activar la escritura privada y validar en el host Linux la asignación y el orden desde la PWA.
+- [ ] Implementar autorización fuerte de escritura con capacidades de Tailscale en lugar de depender solo de CORS y una bandera local.
+- [ ] Validar desde la PWA la asignación, el arrastrar y soltar, el orden de categorías y el manejo de errores contra la API privada habilitada.

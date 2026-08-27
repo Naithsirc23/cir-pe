@@ -64,6 +64,12 @@ export type OrganizationConfig = {
   }>;
 };
 
+export type ProjectOrganizationUpdate = {
+  githubId: string;
+  categoryId: number | null;
+  position: number;
+};
+
 type ProjectRow = Omit<PrivateProject, "topics" | "isArchived" | "isFork"> & {
   topics: string;
   isArchived: number;
@@ -153,11 +159,11 @@ export class PrivateStore {
     this.db.close();
   }
 
-  health() {
+  health(writeEnabled = false) {
     const row = this.db.prepare("SELECT value FROM metadata WHERE key = 'last_sync_at'").get() as { value: string } | undefined;
     return {
       database: "ready" as const,
-      readOnlyMode: true,
+      readOnlyMode: !writeEnabled,
       lastSyncedAt: row?.value ?? null,
     };
   }
@@ -312,6 +318,59 @@ export class PrivateStore {
       this.db
         .prepare("INSERT INTO audit_events (kind, subject, detail_json) VALUES (?, ?, ?)")
         .run("organization_import", "projects", JSON.stringify({ categories: config.categories.length, projects: config.projects.length }));
+      this.db.exec("COMMIT");
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
+  assignProjectCategory(githubId: string, categoryId: number | null) {
+    if (categoryId !== null) {
+      const category = this.db.prepare("SELECT id FROM categories WHERE id = ?").get(categoryId) as { id: number } | undefined;
+      if (!category) throw new Error("La categoría indicada no existe.");
+    }
+    const nextPosition = this.db.prepare("SELECT COALESCE(MAX(position), -1) + 1 AS value FROM projects WHERE category_id IS ?").get(categoryId) as { value: number };
+    const result = this.db.prepare("UPDATE projects SET category_id = ?, position = ?, updated_at = CURRENT_TIMESTAMP WHERE github_id = ?").run(categoryId, nextPosition.value, githubId);
+    if (result.changes !== 1) throw new Error("El proyecto indicado no existe.");
+    this.db.prepare("INSERT INTO audit_events (kind, subject, detail_json) VALUES (?, ?, ?)").run("project_category_assigned", githubId, JSON.stringify({ categoryId }));
+  }
+
+  reorderProjects(updates: ProjectOrganizationUpdate[]) {
+    const seen = new Set<string>();
+    this.db.exec("BEGIN");
+    try {
+      for (const update of updates) {
+        if (!update.githubId || seen.has(update.githubId)) throw new Error("Cada proyecto solo puede aparecer una vez en el orden.");
+        if (!Number.isInteger(update.position) || update.position < 0) throw new Error("La posición del proyecto no es válida.");
+        if (update.categoryId !== null) {
+          const category = this.db.prepare("SELECT id FROM categories WHERE id = ?").get(update.categoryId) as { id: number } | undefined;
+          if (!category) throw new Error("La categoría indicada no existe.");
+        }
+        const result = this.db.prepare("UPDATE projects SET category_id = ?, position = ?, updated_at = CURRENT_TIMESTAMP WHERE github_id = ?").run(update.categoryId, update.position, update.githubId);
+        if (result.changes !== 1) throw new Error(`No existe el proyecto con githubId '${update.githubId}'.`);
+        seen.add(update.githubId);
+      }
+      this.db.prepare("INSERT INTO audit_events (kind, subject, detail_json) VALUES (?, ?, ?)").run("projects_reordered", "projects", JSON.stringify({ count: updates.length }));
+      this.db.exec("COMMIT");
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
+  reorderCategories(categoryIds: number[]) {
+    const ids = new Set(categoryIds);
+    if (ids.size !== categoryIds.length || categoryIds.some(id => !Number.isInteger(id) || id < 1)) throw new Error("El orden de categorías no es válido.");
+    const storedCount = (this.db.prepare("SELECT COUNT(*) AS count FROM categories").get() as { count: number }).count;
+    if (storedCount !== categoryIds.length) throw new Error("El orden debe incluir todas las categorías.");
+    this.db.exec("BEGIN");
+    try {
+      const update = this.db.prepare("UPDATE categories SET position = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?");
+      categoryIds.forEach((id, position) => {
+        if (update.run(position, id).changes !== 1) throw new Error("La categoría indicada no existe.");
+      });
+      this.db.prepare("INSERT INTO audit_events (kind, subject, detail_json) VALUES (?, ?, ?)").run("categories_reordered", "categories", JSON.stringify({ count: categoryIds.length }));
       this.db.exec("COMMIT");
     } catch (error) {
       this.db.exec("ROLLBACK");

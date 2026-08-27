@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { type DashboardProject, type ProjectPriority, type ProjectStatus } from "./project-filters";
 import { trpc } from "./trpc";
 
@@ -26,10 +26,10 @@ type PrivateApiProject = {
   lastSyncedAt: string | null;
 };
 
-export type DashboardCategory = { id: number; name: string; color: string };
+export type DashboardCategory = { id: number; name: string; color: string; position?: number };
 
 type PrivateApiPayload = {
-  readOnlyMode: true;
+  readOnlyMode: boolean;
   projects: PrivateApiProject[];
   categories: DashboardCategory[];
 };
@@ -87,14 +87,32 @@ async function fetchPrivateDashboard(apiUrl: string): Promise<PrivateApiPayload>
 
   const projectsPayload = (await projectsResponse.json()) as { readOnlyMode?: boolean; projects?: PrivateApiProject[] };
   const categoriesPayload = (await categoriesResponse.json()) as { readOnlyMode?: boolean; categories?: DashboardCategory[] };
-  if (!projectsPayload.readOnlyMode || !categoriesPayload.readOnlyMode || !Array.isArray(projectsPayload.projects) || !Array.isArray(categoriesPayload.categories)) {
+  if (typeof projectsPayload.readOnlyMode !== "boolean" || typeof categoriesPayload.readOnlyMode !== "boolean" || projectsPayload.readOnlyMode !== categoriesPayload.readOnlyMode || !Array.isArray(projectsPayload.projects) || !Array.isArray(categoriesPayload.categories)) {
     throw new Error("La fuente privada devolvió un formato no compatible.");
   }
 
-  return { readOnlyMode: true, projects: projectsPayload.projects, categories: categoriesPayload.categories };
+  return { readOnlyMode: projectsPayload.readOnlyMode, projects: projectsPayload.projects, categories: categoriesPayload.categories };
+}
+
+type ProjectOrderUpdate = { githubId: string; categoryId: number | null; position: number };
+
+async function privateMutation(path: string, method: "PATCH" | "PUT", body: unknown) {
+  if (!configuredPrivateApiUrl) throw new Error("La API privada no está configurada.");
+  const response = await fetch(`${configuredPrivateApiUrl}${path}`, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    credentials: "omit",
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    const data = await response.json().catch(() => null) as { message?: string } | null;
+    throw new Error(data?.message || "No se pudo guardar la organización privada.");
+  }
+  return response.json() as Promise<{ ok: true }>;
 }
 
 export function useDashboardData() {
+  const queryClient = useQueryClient();
   const publicProjects = trpc.projects.list.useQuery();
   const publicCategories = trpc.categories.list.useQuery();
   const privateData = useQuery({
@@ -108,16 +126,33 @@ export function useDashboardData() {
   const isPrivate = privateData.isSuccess;
   const projects = isPrivate ? privateData.data.projects.map(toDashboardProject) : ((publicProjects.data ?? []) as DashboardProject[]);
   const categories = isPrivate ? privateData.data.categories : (publicCategories.data ?? [] as DashboardCategory[]);
+  const refreshPrivate = () => queryClient.invalidateQueries({ queryKey: ["cir-private-dashboard", configuredPrivateApiUrl] });
+  const assignCategory = useMutation({
+    mutationFn: ({ githubId, categoryId }: { githubId: string; categoryId: number | null }) => privateMutation(`/api/projects/${encodeURIComponent(githubId)}`, "PATCH", { categoryId }),
+    onSuccess: refreshPrivate,
+  });
+  const reorderProjects = useMutation({
+    mutationFn: (projectUpdates: ProjectOrderUpdate[]) => privateMutation("/api/organization/projects", "PUT", { projects: projectUpdates }),
+    onSuccess: refreshPrivate,
+  });
+  const reorderCategories = useMutation({
+    mutationFn: (categoryIds: number[]) => privateMutation("/api/organization/categories/order", "PUT", { categoryIds }),
+    onSuccess: refreshPrivate,
+  });
 
   return {
     projects,
     categories,
     source: isPrivate ? "private" as const : "public" as const,
+    canOrganize: Boolean(isPrivate && !privateData.data.readOnlyMode),
     isPrivateConfigured: Boolean(configuredPrivateApiUrl),
     isLoading: !projects.length && (privateData.isLoading || publicProjects.isLoading),
     isError: !projects.length && !privateData.isLoading && publicProjects.isError,
     privateUnavailable: Boolean(configuredPrivateApiUrl && !isPrivate && privateData.isError),
     refetch: async () => { await Promise.all([publicProjects.refetch(), publicCategories.refetch(), privateData.refetch()]); },
     retryPrivate: privateData.refetch,
+    assignCategory,
+    reorderProjects,
+    reorderCategories,
   };
 }
